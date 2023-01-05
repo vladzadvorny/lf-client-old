@@ -6,6 +6,10 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 root.render(
   <StrictMode>
     <App />

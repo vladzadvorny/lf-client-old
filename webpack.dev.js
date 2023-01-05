@@ -1,7 +1,11 @@
 const path = require("path");
+const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { merge } = require("webpack-merge");
 
-module.exports = {
+const baseConfig = require("./webpack.base");
+
+const config = {
   entry: "./index.js",
   mode: "development",
   output: {
@@ -17,24 +21,14 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            plugins: ["react-refresh/babel"],
+          },
         },
       },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          "file-loader",
-          {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
-          },
-        ],
       },
     ],
   },
@@ -43,6 +37,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./public/index.html",
     }),
+    new ReactRefreshPlugin(),
   ],
   devServer: {
     static: {
@@ -52,3 +47,5 @@ module.exports = {
     port: 9000,
   },
 };
+
+module.exports = merge(baseConfig, config);
