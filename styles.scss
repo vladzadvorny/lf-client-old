@@ -1,6 +1,9 @@
+$body-color: rgb(1, 37, 116);
+
 .App {
   font-family: sans-serif;
   text-align: center;
+  color: $body-color;
 }
 .Loader {
   display: flex;
