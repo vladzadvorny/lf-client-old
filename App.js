@@ -24,17 +24,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!!!!! Мяу!!!</h2>
       <img src={tiger} className="Image" />
+      <h2>Популярное</h2>
       {data &&
         data.map(({ anime, character, quote }) => (
           <div className="Quotation">
             <div className="header">
-              <h3>{anime}</h3>
-              <h4>{character}</h4>
+              <h3>Тема: {anime}</h3>
+              <h4>Автор: {character}</h4>
             </div>
-            <p>{`"${quote}"`}</p>
+            <p>Вопрос: "{quote}?"</p>
           </div>
         ))}
     </div>

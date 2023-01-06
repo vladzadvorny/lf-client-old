@@ -7,13 +7,16 @@
   justify-content: center;
 }
 .Image {
-  height: 300px;
+  height: 200px;
+  width: 100%;
 }
 .Quotation {
-  background-color: rgb(184, 137, 255);
+  background-color: rgba(181, 176, 253, 0.377);
   padding: 10px;
   margin-top: 25px;
   border-radius: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 .header {
   display: flex;
