@@ -1,7 +1,7 @@
 import react from "react";
 import { useState, useEffect } from "react";
 
-import "./styles.css";
+import "./styles.scss";
 import tiger from "./public/tiger.jpg";
 
 const App = () => {
