@@ -1,0 +1,27 @@
+@import "../constants/constants.scss";
+
+@import "../scss/container";
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: $headerHeight;
+  background-color: $black;
+
+  &-container {
+    padding-left: $freeSpace;
+    padding-right: $freeSpace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo,
+    .login {
+      color: $white;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten($black, 10);
+      }
+    }
+  }
+}

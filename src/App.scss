@@ -2,7 +2,6 @@
 
 @import "./scss/reset";
 @import "./scss/container";
-// @import "../public/lily.jpg";
 
 html {
   min-height: 100%;
@@ -15,11 +14,10 @@ body {
   font-weight: 400;
   line-height: 1.45;
   color: $black;
-  // background-color: lighten($black, 72);
-  background: url("../public/tiger.jpg") repeat;
-  // background-attachment: fixed;
-  // background-repeat: no-repeat;
-  // background-size: 100%;
+  background-image: url("../public/nemothyles.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 html,
@@ -30,52 +28,8 @@ body,
   flex: 1;
 }
 
-.app {
+.main {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-.header {
-  // background-color: $black;
-  display: flex;
-  justify-content: center;
-  height: 46px;
-  background-color: $black;
-
-  &-container {
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .logo,
-    .login {
-      color: $white;
-    }
-  }
-}
-.center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-
-  &-container {
-    padding: $freeSpace;
-    background-color: $white;
-    box-shadow: 1px -2px 19px 4px rgba(34, 60, 80, 0.1);
-  }
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  height: 80px;
-
-  &-container {
-    padding: $freeSpace;
-    background-color: $white;
-    box-shadow: 1px -2px 19px 4px rgba(34, 60, 80, 0.1);
-  }
 }
