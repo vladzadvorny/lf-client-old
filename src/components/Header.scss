@@ -9,18 +9,17 @@
   background-color: $black;
 
   &-container {
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .logo,
     .login {
+      padding: $freeSpace;
       color: $white;
       cursor: pointer;
       &:hover {
-        background-color: lighten($black, 10);
+        background-color: lighten($black, 8);
       }
     }
   }

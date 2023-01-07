@@ -21,8 +21,8 @@
     padding-right: $freeSpace;
     display: flex;
     align-items: center;
-
-    margin-top: $freeSpace;
+    text-decoration: none;
+    color: $black;
     border-radius: $borderRadius;
     border: 1px solid darken($lightblue, 14);
 
@@ -42,7 +42,7 @@
     padding-right: $freeSpace;
     display: flex;
     align-items: center;
-    height: 35px;
+    height: 40px;
     cursor: pointer;
     &:hover {
       background-color: $lightblue;

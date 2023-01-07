@@ -5,9 +5,24 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.scss";
 import Main from "./pages/Main";
+import Category, { loader as categoryLoader } from "./pages/Category";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "category",
+        element: <Category />,
+        loader: categoryLoader,
+      },
+    ],
+  },
+]);
 
 const App = () => {
-  return <Main />;
+  return <RouterProvider router={router} />;
 };
 
 export default App;
