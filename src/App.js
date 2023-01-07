@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.scss";
 import Main from "./pages/Main";
+import Index from "./pages/Index";
 import Category, { loader as categoryLoader } from "./pages/Category";
 
 const router = createBrowserRouter([
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
+      { index: true, element: <Index /> },
       {
         path: "category",
         element: <Category />,
