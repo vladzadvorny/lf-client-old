@@ -3,8 +3,8 @@ module.exports = {
     rules: [
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
+        type: "asset/resource",
         use: [
-          "file-loader",
           {
             loader: "image-webpack-loader",
             options: {
