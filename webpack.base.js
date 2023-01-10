@@ -3,33 +3,33 @@ module.exports = {
     rules: [
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
         use: [
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                progressive: true,
+                progressive: true
               },
               // optipng.enabled: false will disable optipng
               optipng: {
-                enabled: false,
+                enabled: false
               },
               pngquant: {
                 quality: [0.65, 0.9],
-                speed: 4,
+                speed: 4
               },
               gifsicle: {
-                interlaced: false,
+                interlaced: false
               },
               // the webp option will enable WEBP
               webp: {
-                quality: 75,
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
+                quality: 75
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

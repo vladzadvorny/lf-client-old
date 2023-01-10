@@ -1,30 +1,27 @@
-import react from "react";
-import ReactDOM from "react-dom";
-import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import "./App.scss";
-import Main from "./pages/Main";
-import Index from "./pages/Index";
-import Category, { loader as categoryLoader } from "./pages/Category";
+import './App.scss'
+import Main from './pages/Main'
+import Index from './pages/Index'
+import Category, { loader as categoryLoader } from './pages/Category'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main />,
     children: [
       { index: true, element: <Index /> },
       {
-        path: "category",
+        path: 'category',
         element: <Category />,
-        loader: categoryLoader,
-      },
-    ],
-  },
-]);
+        loader: categoryLoader
+      }
+    ]
+  }
+])
 
 const App = () => {
-  return <RouterProvider router={router} />;
-};
+  return <RouterProvider router={router} />
+}
 
-export default App;
+export default App

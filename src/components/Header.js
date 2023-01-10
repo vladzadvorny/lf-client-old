@@ -1,6 +1,4 @@
-import react from "react";
-
-import "./Header.scss";
+import './Header.scss'
 
 const Header = () => {
   return (
@@ -10,6 +8,6 @@ const Header = () => {
         <span className="login">Войти</span>
       </div>
     </div>
-  );
-};
-export default Header;
+  )
+}
+export default Header

@@ -1,17 +1,17 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
-import App from "./src/App";
+import App from './src/App'
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement)
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }
 
 root.render(
   <StrictMode>
     <App />
   </StrictMode>
-);
+)

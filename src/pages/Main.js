@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
 
-import "./Main.scss";
+import './Main.scss'
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Center = () => {
   return (
@@ -12,7 +12,7 @@ const Center = () => {
       <Outlet />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Center;
+export default Center

@@ -1,17 +1,18 @@
-const path = require("path");
-const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { merge } = require("webpack-merge");
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { merge } = require('webpack-merge')
 
-const baseConfig = require("./webpack.base");
+const baseConfig = require('./webpack.base')
 
 const config = {
-  entry: "./index.js",
-  mode: "development",
+  entry: './index.js',
+  mode: 'development',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
-    publicPath: "/",
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/'
   },
 
   module: {
@@ -20,34 +21,34 @@ const config = {
         test: /\.js?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            plugins: ["react-refresh/babel"],
-          },
-        },
+            plugins: ['react-refresh/babel']
+          }
+        }
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-    ],
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
   },
 
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html'
     }),
-    new ReactRefreshPlugin(),
+    new ReactRefreshPlugin()
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, 'public')
     },
     compress: true,
     port: 9000,
     historyApiFallback: true,
-    hot: true,
-  },
-};
+    hot: true
+  }
+}
 
-module.exports = merge(baseConfig, config);
+module.exports = merge(baseConfig, config)

@@ -1,9 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData } from 'react-router-dom'
 
-import "./Category.scss";
+import './Category.scss'
 
 const Category = () => {
-  const { data } = useLoaderData();
+  const { data } = useLoaderData()
 
   return (
     <div className="center">
@@ -54,14 +54,14 @@ const Category = () => {
           ))} */}
       </div>
     </div>
-  );
-};
-
-export async function loader() {
-  const response = await fetch(`https://animechan.vercel.app/api/quotes`);
-  const data = await response.json();
-
-  return { data };
+  )
 }
 
-export default Category;
+export async function loader() {
+  const response = await fetch(`https://animechan.vercel.app/api/quotes`)
+  const data = await response.json()
+
+  return { data }
+}
+
+export default Category

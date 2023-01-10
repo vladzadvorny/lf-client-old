@@ -1,14 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-import "./Index.scss";
+import './Index.scss'
 
 const Index = () => {
   return (
     <div className="center">
       <div className="container center-container">
         <div className="cathegory">
-          <Link to={`category`} className="theme">
+          <Link to="category" className="theme">
             Тема обсуждения
           </Link>
           <ul>
@@ -54,7 +53,7 @@ const Index = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
