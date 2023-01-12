@@ -6,48 +6,87 @@ const Home = () => {
   return (
     <div className="container home-page">
       <div>
-        <Link to="category" className="category">
-          Категория
-        </Link>
-        <ul>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
+        <div className="category">
+          <Link to="category/name">Категория</Link>
+        </div>
+
+        <ul className="topics">
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
         </ul>
       </div>
 
       <div>
-        <div className="category">Категория</div>
-        <ul>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
+        <div className="category">
+          <Link to="category/name">Категория</Link>
+        </div>
+        <ul className="topics">
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
         </ul>
       </div>
 
       <div>
-        <div className="category">Категория</div>
-        <ul>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
+        <div className="category">
+          <Link to="category/name">Категория</Link>
+        </div>
+        <ul className="topics">
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
         </ul>
       </div>
 
       <div>
-        <div className="category">Категория</div>
-        <ul>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
+        <div className="category">
+          <Link to="category/name">Категория</Link>
+        </div>
+        <ul className="topics">
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
         </ul>
       </div>
       <div>
-        <div className="category">Категория</div>
-        <ul>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
-          <li className="topic">Топик</li>
+        <div className="category">
+          <Link to="category/name">Категория</Link>
+        </div>
+        <ul className="topics">
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
+          <li>
+            <Link to="topic/meow">Топик</Link>
+          </li>
         </ul>
       </div>
     </div>

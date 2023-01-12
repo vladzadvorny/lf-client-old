@@ -5,6 +5,7 @@ import Layout from './components/Layout'
 
 import Home from './pages/Home'
 import Category, { loader as categoryLoader } from './pages/Category'
+import Topic, { loader as topicLoader } from './pages/Topic'
 
 const router = createBrowserRouter([
   {
@@ -13,9 +14,14 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       {
-        path: 'category',
+        path: 'category/:name/:page?',
         element: <Category />,
         loader: categoryLoader
+      }
+      ,{
+        path: 'topic/:name',
+        element: <Topic />,
+        loader: topicLoader
       }
     ]
   }

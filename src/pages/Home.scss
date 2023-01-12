@@ -9,40 +9,59 @@
 
   .category {
     background-color: darken($lightblue, 10);
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
+
     display: flex;
-    align-items: center;
+    align-items: stretch;
+
     text-decoration: none;
     color: $black;
     border-radius: $borderRadius;
     border: 1px solid darken($lightblue, 14);
     height: $headerHeight;
-    cursor: pointer;
 
     &:hover {
       background-color: darken($lightblue, 14);
       border: 1px solid darken($lightblue, 18);
     }
+    a {
+      color: $black;
+      text-decoration: none;
+      padding-left: $freeSpace;
+      padding-right: $freeSpace;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
   }
 
-  .topic {
-    border: 0px;
-    border-bottom: 1px;
-    border-color: darken($lightblue, 16);
-    border-style: solid;
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    cursor: pointer;
-    &:hover {
-      background-color: $lightblue;
-    }
+  ul.topics {
+    li {
+      border: 0px;
+      border-bottom: 1px;
+      border-color: darken($lightblue, 16);
+      border-style: solid;
 
-    &:last-child {
-      border-bottom: 0px;
+      display: flex;
+
+      height: 40px;
+
+      &:last-child {
+        border-bottom: 0px;
+      }
+
+      a {
+        text-decoration: none;
+        padding-left: $freeSpace;
+        padding-right: $freeSpace;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        color: $black;
+
+        &:hover {
+          background-color: $lightblue;
+        }
+      }
     }
   }
 }
