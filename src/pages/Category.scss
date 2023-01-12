@@ -1,48 +1,9 @@
 @import '../constants/constants.scss';
 
-.category {
+.category-page {
   padding: $freeSpace;
   background-color: $white;
   box-shadow: 1px -2px 19px 4px rgba(34, 60, 80, 0.1);
   display: flex;
   flex-direction: column;
-
-  .theme {
-    background-color: darken($lightblue, 10);
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: $black;
-    border-radius: $borderRadius;
-    border: 1px solid darken($lightblue, 14);
-    height: $headerHeight;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($lightblue, 14);
-      border: 1px solid darken($lightblue, 18);
-    }
-  }
-
-  .question {
-    border: 0px;
-    border-bottom: 1px;
-    border-color: darken($lightblue, 16);
-    border-style: solid;
-    padding-left: $freeSpace;
-    padding-right: $freeSpace;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    cursor: pointer;
-    &:hover {
-      background-color: $lightblue;
-    }
-
-    &:last-child {
-      border-bottom: 0px;
-    }
-  }
 }
