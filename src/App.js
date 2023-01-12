@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.scss'
 import Layout from './components/Layout'
 
-import Index from './pages/Home'
+import Home from './pages/Home'
 import Category, { loader as categoryLoader } from './pages/Category'
 
 const router = createBrowserRouter([
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Index /> },
+      { index: true, element: <Home /> },
       {
         path: 'category',
         element: <Category />,
