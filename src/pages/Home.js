@@ -4,50 +4,50 @@ import './Home.scss'
 
 const Home = () => {
   return (
-    <div className="container home">
+    <div className="container home-page">
       <div>
-        <Link to="category" className="theme">
-          Тема обсуждения
+        <Link to="category" className="category">
+          Категория
         </Link>
         <ul>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
         </ul>
       </div>
 
       <div>
-        <div className="theme">Тема обсуждения</div>
+        <div className="category">Категория</div>
         <ul>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
         </ul>
       </div>
 
       <div>
-        <div className="theme">Тема обсуждения</div>
+        <div className="category">Категория</div>
         <ul>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
         </ul>
       </div>
 
       <div>
-        <div className="theme">Тема обсуждения</div>
+        <div className="category">Категория</div>
         <ul>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
         </ul>
       </div>
       <div>
-        <div className="theme">Тема обсуждения</div>
+        <div className="category">Категория</div>
         <ul>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
-          <li className="question">Вопрос</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
+          <li className="topic">Топик</li>
         </ul>
       </div>
     </div>
