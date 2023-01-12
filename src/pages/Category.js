@@ -6,43 +6,42 @@ const Category = () => {
   const { data } = useLoaderData()
 
   return (
-    <div className="center">
-      <div className="container center-container">
-        <div className="category">
-          <div className="theme">Тема обсуждения</div>
-          <ul>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-            <li className="question">Вопрос</li>
-          </ul>
-        </div>
-        {/* {data &&
+    <div className="container category">
+      <div className="category1">
+        <div className="theme">Тема обсуждения</div>
+        <ul>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+          <li className="question">Вопрос</li>
+        </ul>
+      </div>
+      {/* {data &&
           data.map(({ anime, character, quote }) => (
             <div className="Quotation">
               <div>
@@ -52,7 +51,6 @@ const Category = () => {
               <p>Вопрос: "{quote}?"</p>
             </div>
           ))} */}
-      </div>
     </div>
   )
 }
