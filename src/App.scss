@@ -1,7 +1,7 @@
-@import "./constants/constants.scss";
+@import './constants/constants.scss';
 
-@import "./scss/reset";
-@import "./scss/container";
+@import './scss/reset';
+@import './scss/container';
 
 html {
   min-height: 100%;
@@ -14,10 +14,11 @@ body {
   font-weight: 400;
   line-height: 1.45;
   color: $black;
-  background-image: url("../public/nemothyles.jpg");
+  background-image: url('../public/nemothyles.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: $headerHeight;
 }
 
 html,
