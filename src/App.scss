@@ -14,7 +14,7 @@ body {
   font-weight: 400;
   line-height: 1.45;
   color: $black;
-  background-image: url('../public/nemothyles.jpg');
+  background-image: url('../public/flowers.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -23,7 +23,8 @@ body {
 
 html,
 body,
-#root {
+#root,
+#root > div {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -33,4 +34,10 @@ body,
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }

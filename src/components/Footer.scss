@@ -1,7 +1,5 @@
 @import '../constants/constants.scss';
 
-@import '../scss/container';
-
 .footer {
   display: flex;
   justify-content: center;
@@ -13,6 +11,6 @@
     color: darken($lightblue, 60);
     align-items: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
   }
 }

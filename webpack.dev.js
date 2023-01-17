@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
-const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const PreactRefreshPlugin = require('@prefresh/webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
 
@@ -21,10 +21,7 @@ const config = {
         test: /\.js?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            plugins: ['react-refresh/babel']
-          }
+          loader: 'babel-loader'
         }
       },
       {
@@ -38,7 +35,7 @@ const config = {
     new HtmlWebPackPlugin({
       template: './public/index.html'
     }),
-    new ReactRefreshPlugin()
+    new PreactRefreshPlugin()
   ],
   devServer: {
     static: {

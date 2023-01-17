@@ -1,34 +1,26 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Router } from 'preact-router'
 
-import './App.scss'
-import Layout from './components/Layout'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 import Home from './pages/Home'
-import Category, { loader as categoryLoader } from './pages/Category'
-import Topic, { loader as topicLoader } from './pages/Topic'
+import Auth from './pages/Auth'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <Home /> },
-      {
-        path: 'category/:name/:page?',
-        element: <Category />,
-        loader: categoryLoader
-      }
-      ,{
-        path: 'topic/:name',
-        element: <Topic />,
-        loader: topicLoader
-      }
-    ]
-  }
-])
+import './App.scss'
 
-const App = () => {
-  return <RouterProvider router={router} />
+const App = ({ route }) => {
+  return (
+    <div>
+      <Header />
+      <div className="content">
+        <Router url={route}>
+          <Home path="/" />
+          <Auth path="/auth" />
+        </Router>
+      </div>
+      <Footer />
+    </div>
+  )
 }
 
 export default App

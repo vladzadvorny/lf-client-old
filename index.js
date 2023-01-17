@@ -1,17 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { render } from 'preact'
 
 import App from './src/App'
 
 const rootElement = document.getElementById('root')
-const root = createRoot(rootElement)
 
-if (module.hot) {
-  module.hot.accept()
-}
-
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-)
+render(<App />, rootElement)
