@@ -1,7 +1,13 @@
-import { render } from 'preact'
+import { hydrate } from 'preact'
 
 import App from './App'
+import { AppStateProvider } from './state'
 
 const rootElement = document.getElementById('root')
 
-render(<App />, rootElement)
+hydrate(
+  <AppStateProvider>
+    <App />
+  </AppStateProvider>,
+  rootElement
+)

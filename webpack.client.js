@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { StatsWriterPlugin } = require('webpack-stats-plugin')
 const { merge } = require('webpack-merge')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const baseConfig = require('./webpack.base')
 
@@ -14,7 +14,7 @@ const config = {
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist-ssr')
   },
   optimization: {
     splitChunks: {
@@ -51,16 +51,25 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           // 'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false
+            }
+          },
           'sass-loader'
         ]
       }
     ]
   },
   plugins: [
-    // new BundleAnalyzerPlugin(),
-    new HtmlWebPackPlugin({
-      template: './public/index.html'
+    new CompressionPlugin(),
+    new StatsWriterPlugin({
+      // filename: 'stats.json',
+      stats: {
+        all: false,
+        assets: true
+      }
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
