@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 
 const config = {
-  entry: './index.js',
+  entry: './src/client.js',
   mode: 'production',
   output: {
     filename: '[name].[chunkhash].js',

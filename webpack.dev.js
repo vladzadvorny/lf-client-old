@@ -7,7 +7,7 @@ const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 
 const config = {
-  entry: './index.js',
+  entry: './src/client.js',
   mode: 'development',
   output: {
     filename: 'main.js',

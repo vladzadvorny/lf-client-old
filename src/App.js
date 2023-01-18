@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 
 import './App.scss'
+import { AppStateProvider } from './state'
 
 const App = ({ route }) => {
   return (
@@ -23,4 +24,8 @@ const App = ({ route }) => {
   )
 }
 
-export default App
+export default () => (
+  <AppStateProvider>
+    <App />
+  </AppStateProvider>
+)
