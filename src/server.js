@@ -64,8 +64,7 @@ function renderer(route, state = {}) {
         .join('\n')}
     </head>
     <body>
-      <div id="root">${rendered}</div>    
-    
+      ${rendered}
       <script>
           window.__STATE__ = ${serialize(state).replace(/</g, '\\u003c')}
       </script>

@@ -2,11 +2,11 @@ import './Footer.scss'
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="container footer-container">
-        <p>© 2023 LilyFamily</p>
+        <span>© 2023 LilyFamily</span>
       </div>
-    </div>
+    </footer>
   )
 }
 

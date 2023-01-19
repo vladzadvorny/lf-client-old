@@ -1,16 +1,16 @@
-@import '../constants/constants.scss';
-
 .footer {
   display: flex;
   justify-content: center;
-  height: 80px;
+  height: var(--footer-height);
+  background-color: var(--card-sectionning-background-color);
+  box-shadow: var(--card-box-shadow);
 
   &-container {
-    padding: $freeSpace;
-    background-color: $lightblue;
-    color: darken($lightblue, 60);
     align-items: center;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+
+    // span {}
   }
 }

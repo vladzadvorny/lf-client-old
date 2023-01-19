@@ -1,4 +1,4 @@
-import { useHead, useLink } from 'hoofd/preact'
+import { useHead } from 'hoofd/preact'
 
 import './Home.scss'
 
@@ -23,12 +23,13 @@ const Home = () => {
         click me!
       </button>
       <input />
+
       <article>
-        <header>Header</header>
+        <header>hello</header>
         Body
         <footer>Footer</footer>
       </article>
-      <form>
+      {/* <form>
         <div className="grid">
           <label htmlFor="firstname">
             First name
@@ -68,7 +69,7 @@ const Home = () => {
         <small>We ll never share your email with anyone else.</small>
 
         <button type="submit">Submit</button>
-      </form>
+      </form> */}
     </div>
   )
 }

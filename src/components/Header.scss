@@ -1,29 +1,28 @@
-@import '../constants/constants.scss';
-
 .header {
   display: flex;
   justify-content: center;
-  height: $headerHeight;
-  background-color: $black;
+  height: var(--header-height);
+  background-color: var(--contrast);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+  box-shadow: var(--card-box-shadow);
 
   &-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 var(--spacing);
 
     .logo,
     .login {
-      padding: $freeSpace;
-      color: $white;
       cursor: pointer;
+      color: white;
 
       &:hover {
-        background-color: lighten($black, 8);
+        background-color: black;
       }
     }
   }

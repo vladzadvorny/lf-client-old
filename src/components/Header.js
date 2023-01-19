@@ -3,14 +3,14 @@ import './Header.scss'
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="container header-container">
+    <header className="header">
+      <nav className="container header-container">
         <Link className="logo" href="/">
           LilyFamily
         </Link>
         <span className="login">Войти</span>
-      </div>
-    </div>
+      </nav>
+    </header>
   )
 }
 export default Header

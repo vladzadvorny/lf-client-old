@@ -1,9 +1,7 @@
-$black: darken(#d2e1f8, 82);
-$white: #ffffff;
-$lightblue: lighten(#d2e1f8, 8);
-$primary: #35db92;
-$secondary: lighten(#db357e, 14);
-$freeSpace: 12px;
-$headerHeight: 50px;
-$footerHeight: 42px;
-$borderRadius: 4px;
+$headerHeight: 69px;
+$footerHeight: 69px;
+
+:root {
+  --header-height: #{$headerHeight};
+  --footer-height: #{$footerHeight};
+}

@@ -1,3 +1,4 @@
+import { Fragment } from 'preact'
 import { Router } from 'preact-router'
 import { useHead } from 'hoofd/preact'
 
@@ -15,16 +16,16 @@ const App = ({ route }) => {
   })
 
   return (
-    <div>
+    <Fragment>
       <Header />
-      <div className="content">
+      <main>
         <Router url={route}>
           <Home path="/" />
           <Auth path="/auth" />
         </Router>
-      </div>
+      </main>
       <Footer />
-    </div>
+    </Fragment>
   )
 }
 

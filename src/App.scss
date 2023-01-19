@@ -1,45 +1,21 @@
-@import './constants/constants.scss';
-
-// @import './scss/reset';
-// @import './scss/container';
+@import './constants/constants';
+@import './scss/reset';
 
 html {
   min-height: 100%;
   font-size: 1em;
-  overflow-y: scroll;
-}
-
-body {
-  font-family: Arial, Helvetica, Verdana, sans-serif;
-  font-weight: 400;
-  line-height: 1.45;
-  color: $black;
-  // background-image: url('../public/flowers.jpg');
-  // background-attachment: fixed;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  padding-top: $headerHeight;
 }
 
 html,
 body,
-#root,
-#root > div {
+main {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+body {
+  padding-top: calc(var(--header-height) + var(--spacing));
 }
 
 // Breakpoints
@@ -49,7 +25,7 @@ $breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  // xl: 1200px,
+  xl: 'null'
 ) !default;
 
 // Viewports
@@ -58,50 +34,7 @@ $viewports: (
   sm: 510px,
   md: 700px,
   lg: 920px,
-  // xl: 1130px
+  xl: 'null'
 ) !default;
 
-@import '@picocss/pico/scss/pico';
-
-// @if ($enable-class-container and $enable-classes) {
-//   /**
-//  * Container
-//  */
-
-//   .container,
-//   .container-fluid {
-//     width: 100%;
-//     margin-right: auto;
-//     margin-left: auto;
-//     padding-right: var(--spacing);
-//     padding-left: var(--spacing);
-//   }
-
-//   .container {
-//     @if map-get($breakpoints, 'sm') {
-//       @media (min-width: map-get($breakpoints, 'sm')) {
-//         max-width: map-get($viewports, 'sm');
-//         // padding-right: 0;
-//         // padding-left: 0;
-//       }
-//     }
-
-//     @if map-get($breakpoints, 'md') {
-//       @media (min-width: map-get($breakpoints, 'md')) {
-//         max-width: map-get($viewports, 'md');
-//       }
-//     }
-
-//     @if map-get($breakpoints, 'lg') {
-//       @media (min-width: map-get($breakpoints, 'lg')) {
-//         max-width: map-get($viewports, 'lg');
-//       }
-//     }
-
-//     @if map-get($breakpoints, 'xl') {
-//       @media (min-width: map-get($breakpoints, 'xl')) {
-//         max-width: map-get($viewports, 'xl');
-//       }
-//     }
-//   }
-// }
+@import './scss/pico';
