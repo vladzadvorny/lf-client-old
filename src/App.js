@@ -1,4 +1,5 @@
 import { Router } from 'preact-router'
+import { useHead } from 'hoofd/preact'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -9,6 +10,10 @@ import Auth from './pages/Auth'
 import './App.scss'
 
 const App = ({ route }) => {
+  useHead({
+    language: 'ru'
+  })
+
   return (
     <div>
       <Header />

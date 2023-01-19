@@ -1,7 +1,7 @@
 @import './constants/constants.scss';
 
-@import './scss/reset';
-@import './scss/container';
+// @import './scss/reset';
+// @import './scss/container';
 
 html {
   min-height: 100%;
@@ -14,10 +14,10 @@ body {
   font-weight: 400;
   line-height: 1.45;
   color: $black;
-  background-image: url('../public/flowers.jpg');
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url('../public/flowers.jpg');
+  // background-attachment: fixed;
+  // background-repeat: no-repeat;
+  // background-size: cover;
   padding-top: $headerHeight;
 }
 
@@ -41,3 +41,67 @@ body,
   display: flex;
   justify-content: center;
 }
+
+// Breakpoints
+// 'null' disable the breakpoint
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  // xl: 1200px,
+) !default;
+
+// Viewports
+$viewports: (
+  // 'null' disable the viewport on a breakpoint
+  sm: 510px,
+  md: 700px,
+  lg: 920px,
+  // xl: 1130px
+) !default;
+
+@import '@picocss/pico/scss/pico';
+
+// @if ($enable-class-container and $enable-classes) {
+//   /**
+//  * Container
+//  */
+
+//   .container,
+//   .container-fluid {
+//     width: 100%;
+//     margin-right: auto;
+//     margin-left: auto;
+//     padding-right: var(--spacing);
+//     padding-left: var(--spacing);
+//   }
+
+//   .container {
+//     @if map-get($breakpoints, 'sm') {
+//       @media (min-width: map-get($breakpoints, 'sm')) {
+//         max-width: map-get($viewports, 'sm');
+//         // padding-right: 0;
+//         // padding-left: 0;
+//       }
+//     }
+
+//     @if map-get($breakpoints, 'md') {
+//       @media (min-width: map-get($breakpoints, 'md')) {
+//         max-width: map-get($viewports, 'md');
+//       }
+//     }
+
+//     @if map-get($breakpoints, 'lg') {
+//       @media (min-width: map-get($breakpoints, 'lg')) {
+//         max-width: map-get($viewports, 'lg');
+//       }
+//     }
+
+//     @if map-get($breakpoints, 'xl') {
+//       @media (min-width: map-get($breakpoints, 'xl')) {
+//         max-width: map-get($viewports, 'xl');
+//       }
+//     }
+//   }
+// }
