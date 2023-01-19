@@ -3,7 +3,7 @@
 
 html {
   min-height: 100%;
-  font-size: 1em;
+  // font-size: 1em;
 }
 
 html,
@@ -18,23 +18,10 @@ body {
   padding-top: calc(var(--header-height) + var(--spacing));
 }
 
-// Breakpoints
-// 'null' disable the breakpoint
-$breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 'null'
-) !default;
-
-// Viewports
-$viewports: (
-  // 'null' disable the viewport on a breakpoint
-  sm: 510px,
-  md: 700px,
-  lg: 920px,
-  xl: 'null'
-) !default;
+// https://fonts.google.com/icons
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 28px;
+}
 
 @import './scss/pico';

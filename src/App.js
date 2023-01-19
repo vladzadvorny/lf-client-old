@@ -4,6 +4,7 @@ import { useHead } from 'hoofd/preact'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Notification from './components/Notification'
 
 import Home from './pages/Home'
 import Auth from './pages/Auth'
@@ -25,6 +26,7 @@ const App = ({ route }) => {
         </Router>
       </main>
       <Footer />
+      <Notification />
     </Fragment>
   )
 }

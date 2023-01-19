@@ -8,7 +8,9 @@ const Header = () => {
         <Link className="logo" href="/">
           LilyFamily
         </Link>
-        <span className="login">Войти</span>
+        <Link href="/auth" className="login" activeClassName="active">
+          Войти
+        </Link>
       </nav>
     </header>
   )

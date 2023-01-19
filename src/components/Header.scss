@@ -21,7 +21,8 @@
       cursor: pointer;
       color: white;
 
-      &:hover {
+      &:hover,
+      .active {
         background-color: black;
       }
     }
