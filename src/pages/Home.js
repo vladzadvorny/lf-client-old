@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div className="container home-page">
-      <p>Count: {hello}</p>
+      {/* <p>Count: {hello}</p>
       <button
         type="submit"
         onClick={() => {
@@ -22,13 +22,31 @@ const Home = () => {
       >
         click me!
       </button>
-      <input />
-
+      <input /> */}
+      <article>
+        <header>
+          <div>hello</div>
+          <div>hello</div>
+        </header>
+        Body
+        <footer>Footer</footer>
+      </article>
       <article>
         <header>hello</header>
         Body
         <footer>Footer</footer>
       </article>
+      <article>
+        <header>hello</header>
+        Body
+        <footer>Footer</footer>
+      </article>
+      <article>
+        <header>hello</header>
+        Body
+        <footer>Footer</footer>
+      </article>
+
       {/* <form>
         <div className="grid">
           <label htmlFor="firstname">

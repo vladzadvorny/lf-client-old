@@ -4,16 +4,18 @@
   top: calc(var(--header-height) + var(--spacing));
   z-index: 100;
   transition: opacity 0.3s linear, max-height 0.8s linear;
-  background-color: var(--form-element-invalid-focus-color);
+  background-color: var(--form-element-invalid-border-color);
   width: 400px;
   padding: var(--spacing);
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--card-box-shadow);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--form-element-invalid-border-color);
 
   span {
-    color: var(--form-element-invalid-border-color);
+    color: white;
   }
 
   span:nth-of-type(2) {
