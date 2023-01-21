@@ -26,6 +26,7 @@ const Auth = () => {
               name="login"
               placeholder="Login"
               aria-label="Login"
+              aria-invalid="true"
             />
             <input
               type="password"

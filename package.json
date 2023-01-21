@@ -9,7 +9,9 @@
     "build:spa": "rimraf ./dist && webpack --config webpack.spa.js",
     "build:ssr": "rimraf ./dist-ssr && webpack --config webpack.client.js && webpack --config webpack.server.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "serve": "serve dist"
+    "serve": "serve dist",
+    "deploy": "yarn build:ssr && sh deploy.sh",
+    "setup": "yarn build:ssr && sh ./setup.sh"
   },
   "dependencies": {
     "@picocss/pico": "^1.5.6",
