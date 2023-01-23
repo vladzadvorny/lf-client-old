@@ -1,4 +1,5 @@
 import { useHead } from 'hoofd/preact'
+import { useState } from 'preact/hooks'
 
 import { useAppState } from '../state'
 
@@ -10,13 +11,14 @@ const Auth = () => {
     title: 'Welcome to hoofd | 💭',
     metas: [{ content: 'Jovi De Croock', name: 'description' }]
   })
+  const [isRegister, setIsRegister] = useState(false)
 
   return (
     <div className="container auth-page">
       <article className="grid">
         <div>
           <hgroup>
-            <h1>Sign in</h1>
+            <h1>{isRegister ? 'Register' : 'Login'}</h1>
             <h2>A minimalist layout for Login pages</h2>
           </hgroup>
 
@@ -34,6 +36,14 @@ const Auth = () => {
               placeholder="Password"
               aria-label="Password"
             />
+            {isRegister && (
+              <input
+                type="password"
+                name="PasswordConfirm"
+                placeholder="Password Confirm"
+                aria-label="PasswordConfirm"
+              />
+            )}
             <fieldset>
               <label htmlFor="remember">
                 <input
@@ -46,16 +56,26 @@ const Auth = () => {
               </label>
             </fieldset>
             <button
+              className={isRegister ? 'secondary' : 'primaruy'}
               type="submit"
               onClick={() => {
                 notification.value = !notification.value
               }}
             >
-              Login
+              {isRegister ? 'Register' : 'Login'}
+            </button>
+            <button
+              className={`outline ${isRegister ? 'primaruy' : 'secondary'}`}
+              type="submit"
+              onClick={() => {
+                setIsRegister(!isRegister)
+              }}
+            >
+              {isRegister ? 'Go to Login' : 'Go to Register'}
             </button>
           </form>
         </div>
-        <div className="image" />
+        <div className={isRegister ? 'register' : 'login'} />
       </article>
     </div>
   )

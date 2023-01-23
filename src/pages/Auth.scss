@@ -34,7 +34,8 @@
   }
 
   /* Hero Image */
-  article div:nth-of-type(2) {
+  article .login,
+  article .register {
     display: none;
     background-color: #374956;
     background-image: url('../../public/flowers.jpg');
@@ -42,8 +43,13 @@
     background-size: cover;
   }
 
+  .register {
+    background-image: url('../../public/tulips.jpg') !important;
+  }
+
   @media (min-width: 992px) {
-    .grid > div:nth-of-type(2) {
+    .grid .login,
+    .grid .register {
       display: block;
     }
   }
