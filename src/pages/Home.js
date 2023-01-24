@@ -2,10 +2,7 @@ import { useHead } from 'hoofd/preact'
 
 import './Home.scss'
 
-import { useAppState } from '../state'
-
 const Home = () => {
-  const { hello } = useAppState()
   useHead({
     title: 'Welcome to hoofd | 💭',
     metas: [{ content: 'Jovi De Croock', name: 'description' }]

@@ -13,14 +13,12 @@ const Notification = () => {
         maxHeight: notification.value ? 1000 : 0
       }}
     >
-      <span>
-        Hello world! Hello world! Hello world! Hello world! Hello world!
-      </span>
+      <span>{notification}</span>
       <span
         role="presentation"
         className="material-symbols-outlined"
         onClick={() => {
-          notification.value = false
+          notification.value = null
         }}
       >
         close

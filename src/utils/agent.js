@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable dot-notation */
-import redaxios from 'redaxios'
+import axios from 'axios'
 
 import { uri as baseURL } from '../constants/config'
 import { storage } from '../constants/storage'
 
-export const agent = redaxios.create({
+export const agent = axios.create({
   baseURL,
   headers: { 'Content-Type': 'application/json' }
 })

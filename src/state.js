@@ -4,10 +4,10 @@ import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
 
 const createAppState = () => {
-  const hello = signal(0)
-  const notification = signal(false)
+  const notification = signal(null)
+  const me = signal({ id: null })
 
-  return { hello, notification }
+  return { notification, me }
 }
 
 const state = createAppState()
@@ -18,7 +18,7 @@ effect(() => {
   if (state.notification.value) {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
-      state.notification.value = false
+      state.notification.value = null
     }, 4000)
   }
 })

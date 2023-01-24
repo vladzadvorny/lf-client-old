@@ -1,17 +1,54 @@
 import { useHead } from 'hoofd/preact'
 import { useState } from 'preact/hooks'
+import axios from 'axios'
 
 import { useAppState } from '../state'
+import { uri } from '../constants/config'
 
 import './Auth.scss'
 
 const Auth = () => {
   const { notification } = useAppState()
   useHead({
-    title: 'Welcome to hoofd | 💭',
-    metas: [{ content: 'Jovi De Croock', name: 'description' }]
+    title: 'Welcome to hoofd | 💭'
+    // metas: [{ content: 'Jovi De Croock', name: 'description' }]
   })
   const [isRegister, setIsRegister] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [error, setError] = useState(null)
+
+  const send = async () => {
+    setLoading(true)
+    try {
+      let data
+      if (isRegister) {
+        ;({ data } = await axios.put(`${uri}/auth/local`, {
+          name,
+          email,
+          password,
+          passwordConfirm
+        }))
+      } else {
+        ;({ data } = await axios.post(`${uri}/auth/local`, {
+          email,
+          password
+        }))
+      }
+
+      if (data.error) {
+        notification.value = data.error.message
+        setError(data.error)
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="container auth-page">
@@ -23,25 +60,55 @@ const Auth = () => {
           </hgroup>
 
           <form onSubmit={e => e.preventDefault()}>
+            {isRegister && (
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                aria-label="Name"
+                {...(error &&
+                  error.fields.includes('name') && { ariaInvalid: true })}
+                // aria-invalid="true"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                onFocus={() => setError(null)}
+              />
+            )}
             <input
-              type="text"
-              name="login"
-              placeholder="Login"
-              aria-label="Login"
-              aria-invalid="true"
+              type="email"
+              name="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              {...(error &&
+                error.fields.includes('email') && { ariaInvalid: true })}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              onFocus={() => setError(null)}
             />
             <input
               type="password"
               name="password"
               placeholder="Password"
               aria-label="Password"
+              {...(error &&
+                error.fields.includes('password') && { ariaInvalid: true })}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              onFocus={() => setError(null)}
             />
             {isRegister && (
               <input
                 type="password"
-                name="PasswordConfirm"
+                name="passwordConfirm"
                 placeholder="Password Confirm"
-                aria-label="PasswordConfirm"
+                aria-label="passwordConfirm"
+                {...(error &&
+                  error.fields.includes('passwordConfirm') && {
+                    ariaInvalid: true
+                  })}
+                value={passwordConfirm}
+                onChange={e => setPasswordConfirm(e.target.value)}
+                onFocus={() => setError(null)}
               />
             )}
             <fieldset>
@@ -59,8 +126,10 @@ const Auth = () => {
               className={isRegister ? 'secondary' : 'primaruy'}
               type="submit"
               onClick={() => {
-                notification.value = !notification.value
+                // notification.value = !notification.value
+                send()
               }}
+              aria-busy={loading}
             >
               {isRegister ? 'Register' : 'Login'}
             </button>
