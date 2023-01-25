@@ -9,8 +9,9 @@ const Notification = () => {
     <div
       className="notification"
       style={{
-        opacity: notification.value ? 1 : 0,
-        maxHeight: notification.value ? 1000 : 0
+        display: notification.value ? 'flex' : 'none'
+        // opacity: notification.value ? 1 : 0,
+        // maxHeight: notification.value ? 1000 : 0
       }}
     >
       <span>{notification}</span>

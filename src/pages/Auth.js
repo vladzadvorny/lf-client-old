@@ -12,7 +12,6 @@ const Auth = () => {
   const { notification, me } = useAppState()
   useHead({
     title: 'Welcome to hoofd | 💭'
-    // metas: [{ content: 'Jovi De Croock', name: 'description' }]
   })
   const [isRegister, setIsRegister] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -50,7 +49,6 @@ const Auth = () => {
         notification.value = data.error.message
         setError(data.error)
       } else {
-        console.log(data)
         localStorage.setItem(storage.token, data.token)
         route('/')
         me.value = data.me
@@ -138,7 +136,6 @@ const Auth = () => {
               className={isRegister ? 'secondary' : 'primaruy'}
               type="submit"
               onClick={() => {
-                // notification.value = !notification.value
                 send()
               }}
               aria-busy={loading}

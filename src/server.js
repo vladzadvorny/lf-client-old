@@ -59,14 +59,14 @@ function renderer(route, state = {}) {
             .map(key => `${key}="${meta[key]}"`)
             .join(' ')}>`,
         ''
-      )}  
+      )}
       ${links.reduce(
         (acc, link) =>
           `${acc}<link ${Object.keys(link)
             .map(key => `${key}="${link[key]}"`)
             .join(' ')}>`,
         ''
-      )}   
+      )}
       ${stylesheets
         .map(f => `<link rel="stylesheet" type="text/css" href="/${f}" />`)
         .join('\n')}

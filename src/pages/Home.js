@@ -4,8 +4,8 @@ import './Home.scss'
 
 const Home = () => {
   useHead({
-    title: 'Welcome to hoofd | 💭',
-    metas: [{ content: 'Jovi De Croock', name: 'description' }]
+    title: 'Welcome to Lily Family'
+    // metas: [{ content: 'Jovi De Croock', name: 'description' }]
   })
 
   return (
