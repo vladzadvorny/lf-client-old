@@ -21,7 +21,7 @@ const App = ({ route }) => {
     language: 'ru'
   })
   const { me } = useAppState()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(!true)
 
   useEffect(() => {
     bootstrap()
@@ -32,7 +32,8 @@ const App = ({ route }) => {
       const token = localStorage.getItem(storage.token)
 
       if (token) {
-        const { data } = await agent.get('/me')
+        const data = await agent('/me')
+        console.log(data)
         me.value = data.me
       }
     } catch (error) {

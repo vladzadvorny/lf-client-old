@@ -33,7 +33,7 @@ const config = {
   devtool: 'source-map',
   plugins: [
     new HtmlWebPackPlugin({
-      template: './public/index.html'
+      template: './index.html'
     }),
     new PreactRefreshPlugin()
   ],

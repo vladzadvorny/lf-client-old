@@ -38,13 +38,13 @@
   article .register {
     display: none;
     background-color: #374956;
-    background-image: url('../../public/flowers.jpg');
+    background-image: url('../assets/flowers.jpg');
     background-position: center;
     background-size: cover;
   }
 
   .register {
-    background-image: url('../../public/tulips.jpg') !important;
+    background-image: url('../assets/tulips.jpg') !important;
   }
 
   @media (min-width: 992px) {

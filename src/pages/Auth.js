@@ -1,14 +1,15 @@
 import { useHead } from 'hoofd/preact'
 import { useState } from 'preact/hooks'
-import axios from 'axios'
+import { route } from 'preact-router'
 
 import { useAppState } from '../state'
 import { uri } from '../constants/config'
 
 import './Auth.scss'
+import { storage } from '../constants/storage'
 
 const Auth = () => {
-  const { notification } = useAppState()
+  const { notification, me } = useAppState()
   useHead({
     title: 'Welcome to hoofd | 💭'
     // metas: [{ content: 'Jovi De Croock', name: 'description' }]
@@ -26,22 +27,33 @@ const Auth = () => {
     try {
       let data
       if (isRegister) {
-        ;({ data } = await axios.put(`${uri}/auth/local`, {
-          name,
-          email,
-          password,
-          passwordConfirm
-        }))
+        const res = await fetch(`${uri}/auth/local`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, password, passwordConfirm })
+        })
+        data = await res.json()
       } else {
-        ;({ data } = await axios.post(`${uri}/auth/local`, {
-          email,
-          password
-        }))
+        const res = await fetch(`${uri}/auth/local`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        })
+        data = await res.json()
       }
 
       if (data.error) {
         notification.value = data.error.message
         setError(data.error)
+      } else {
+        console.log(data)
+        localStorage.setItem(storage.token, data.token)
+        route('/')
+        me.value = data.me
       }
     } catch (err) {
       console.log(err)

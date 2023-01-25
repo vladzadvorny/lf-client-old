@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const baseConfig = require('./webpack.base')
 
@@ -63,6 +64,9 @@ const config = {
     ]
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: 'public' }]
+    }),
     new CompressionPlugin(),
     new StatsWriterPlugin({
       // filename: 'stats.json',

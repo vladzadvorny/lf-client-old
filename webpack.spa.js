@@ -2,9 +2,10 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const baseConfig = require('./webpack.base')
 
@@ -58,9 +59,12 @@ const config = {
     ]
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: 'public' }]
+    }),
     // new BundleAnalyzerPlugin(),
     new HtmlWebPackPlugin({
-      template: './public/index.html'
+      template: './index.html'
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

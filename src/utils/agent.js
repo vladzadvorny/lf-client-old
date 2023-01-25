@@ -1,33 +1,30 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable dot-notation */
-import axios from 'axios'
 
-import { uri as baseURL } from '../constants/config'
+import { uri } from '../constants/config'
 import { storage } from '../constants/storage'
 
-export const agent = axios.create({
-  baseURL,
-  headers: { 'Content-Type': 'application/json' }
-})
+export const agent = async (...args) => {
+  const [resource, config] = args
+  // request interceptor here
+  const token = localStorage.getItem(storage.token)
 
-agent.interceptors.request.use(
-  async config => {
-    const token = localStorage.getItem(storage.token)
+  const response = await fetch(`${uri}${resource}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    ...config
+  })
 
-    config.headers['Authorization'] = `Bearer ${token}`
+  // response interceptor here
+  if (!response.ok && response.status === 401) {
+    localStorage.removeItem(storage.token)
 
-    return config
-  },
-  error => Promise.reject(error)
-)
-
-agent.interceptors.response.use(
-  response => response,
-  async error => {
-    if (error.response.status === 401) {
-      localStorage.removeItem(storage.token)
-    }
-
-    return Promise.reject(error)
+    return Promise.reject(response)
   }
-)
+
+  const data = await response.json()
+
+  return data
+}
