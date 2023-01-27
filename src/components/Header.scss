@@ -18,7 +18,7 @@
 
     a {
       cursor: pointer;
-      color: white;
+      color: var(--primary-inverse);
 
       &:hover,
       .active {

@@ -62,7 +62,7 @@ const config = {
     new CopyPlugin({
       patterns: [{ from: 'public' }]
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     new HtmlWebPackPlugin({
       template: './index.html'
     }),
