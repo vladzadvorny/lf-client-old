@@ -3,10 +3,12 @@ import render from 'preact-render-to-string'
 import serialize from 'serialize-javascript'
 import serve from 'koa-static'
 import { toStatic } from 'hoofd/preact'
+import { TranslateProvider } from '@denysvuika/preact-translate'
 
 import App from './App'
 
 import { assetsByChunkName } from '../dist-ssr/stats.json'
+import en from '../public/translations/en.json'
 
 const app = new Koa()
 
@@ -20,7 +22,11 @@ app.use(async ctx => {
 
 // renderer
 function renderer(route, state = {}) {
-  const rendered = render(<App route={route} />)
+  const rendered = render(
+    <TranslateProvider translations={{ en }} lang="en">
+      <App route={route} />
+    </TranslateProvider>
+  )
 
   let files = []
 

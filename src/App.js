@@ -10,6 +10,7 @@ import Notification from './components/Notification'
 
 import Home from './pages/Home'
 import Auth from './pages/Auth'
+import Editor from './pages/Editor'
 
 import './App.scss'
 import { agent } from './utils/agent'
@@ -54,6 +55,7 @@ const App = ({ route }) => {
         <Router url={route}>
           <Home path="/" />
           <Auth path="/auth" />
+          <Editor path="/editor" />
         </Router>
       </main>
       <Footer />

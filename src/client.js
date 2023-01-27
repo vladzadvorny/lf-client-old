@@ -1,11 +1,14 @@
 import { hydrate } from 'preact'
+import { TranslateProvider } from '@denysvuika/preact-translate'
 
 import App from './App'
 import { AppStateProvider } from './state'
 
 hydrate(
-  <AppStateProvider>
-    <App />
-  </AppStateProvider>,
+  <TranslateProvider root="translations">
+    <AppStateProvider>
+      <App />
+    </AppStateProvider>
+  </TranslateProvider>,
   document.body
 )

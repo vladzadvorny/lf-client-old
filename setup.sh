@@ -6,8 +6,8 @@ scp package.tar.gz root@79.132.138.106:~/.
 rm package.tar.gz
 
 ssh root@79.132.138.106 << 'ENDSSH'
-# pm2 stop lilyfamily_ssr
-# pm2 delete lilyfamily_ssr
+pm2 stop lilyfamily_ssr
+pm2 delete lilyfamily_ssr
 rm -rf lilyfamily_ssr
 mkdir lilyfamily_ssr
 tar xf package.tar.gz -C ./lilyfamily_ssr
