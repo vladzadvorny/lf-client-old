@@ -11,7 +11,7 @@ export const agent = async (...args) => {
 
   const response = await fetch(`${uri}${resource}`, {
     headers: {
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     },
     ...config

@@ -42,7 +42,7 @@
         position: absolute;
         // color: $secondaryColor;
         // background-color: lighten($secondaryColor, 48);
-        z-index: 777;
+        // z-index: 777;
         top: 0;
         left: 0;
         right: 0;
@@ -57,7 +57,7 @@
 
     img {
       // width: 100%;
-      max-width: 50%;
+      // max-width: 50%;
       height: auto;
       margin-bottom: var(--spacing);
     }

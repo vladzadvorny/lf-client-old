@@ -34,7 +34,7 @@ const App = ({ route }) => {
 
       if (token) {
         const data = await agent('/me')
-
+        console.log(data)
         me.value = data.me
       }
     } catch (error) {

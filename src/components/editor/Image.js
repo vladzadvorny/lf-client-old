@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'preact/hooks'
 
 import './Image.scss'
-import { uri } from '../../constants/config'
+import { filesUri } from '../../constants/config'
 import { useTranslate } from '../../hooks/useTranslate'
+import { agent } from '../../utils/agent'
 
 import Dropzone from './Dropzone'
 
@@ -31,18 +32,18 @@ const Image = ({ setImage, item }) => {
       const formData = new FormData()
       formData.append('file', file)
 
-      const res = await fetch(`${uri}/uploads`, {
+      const data = await agent('/upload', {
+        // headers: {
+        //   // 'Content-Type': false
+        // },
         method: 'POST',
-        headers: new Headers({
-          // Authorization: `Bearer ${token}`
-        }),
         body: formData
       })
-      const data = await res.json()
+      // const data = await res.json()
 
       console.log('data', data)
 
-      if (!data.ok) {
+      if (data.error) {
         setError(data.error)
       } else {
         setImage({ p: data.filePath })
@@ -58,8 +59,8 @@ const Image = ({ setImage, item }) => {
         <Dropzone
           onDrop={onDrop}
           multiple={false}
-          maxSize={2 * 1024 * 1024}
-          accept="image/jpeg, image/png"
+          maxSize={5 * 1024 * 1024}
+          accept="image/jpeg, image/png, image/gif, image/webp"
           className="dropzone"
           disableClick={loading}
         >
@@ -67,7 +68,7 @@ const Image = ({ setImage, item }) => {
           {error && <span className="error-message">{error}</span>}
         </Dropzone>
       ) : (
-        <img src={`${uri}/uploads${path}`} alt="" />
+        <img src={`${filesUri}${path}`} alt="" />
       )}
     </div>
   )
