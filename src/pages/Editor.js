@@ -6,6 +6,9 @@ import './Editor.scss'
 import { siteName } from '../constants/config'
 import { useTranslate } from '../hooks/useTranslate'
 
+import Text from '../components/editor/Text'
+import Image from '../components/editor/Image'
+
 const Editor = () => {
   const { t } = useTranslate()
   useHead({
@@ -18,6 +21,16 @@ const Editor = () => {
   const getId = () => Math.random().toString(36)
 
   const addItem = item => setItems([...items, item])
+
+  const changeItem = item =>
+    setItems(
+      items.map(_item => {
+        if (_item.id === item.id) {
+          return item
+        }
+        return _item
+      })
+    )
 
   const addBoxItems = [
     {
@@ -48,10 +61,42 @@ const Editor = () => {
       }
     }
   ]
-
+  console.log(items)
   return (
     <div className="container editor-page">
       <input placeholder={t('editor.title')} />
+
+      {items.map(item => (
+        <div className="item" key={item.id}>
+          <div>
+            {item.type === 'text' && (
+              <Text
+                html={item.body}
+                setHtml={html => {
+                  changeItem({
+                    ...item,
+                    body: html.replace(/(<\/?(?:a|b|i)[^>]*>)|<[^>]+>/gi, '$1')
+                  })
+                }}
+                onBlur={console.log}
+              />
+            )}
+            {item.type === 'image' && (
+              <Image
+                item={item}
+                setImage={image =>
+                  changeItem({
+                    ...item,
+                    body: image
+                  })
+                }
+              />
+            )}
+          </div>
+          <div>r</div>
+        </div>
+      ))}
+
       <div className="add-box">
         {addBoxItems.map(({ name, item, icon }) => (
           <div role="presentation" onClick={() => addItem(item)}>
