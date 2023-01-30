@@ -1,0 +1,17 @@
+.editor {
+  &-video {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin-top: var(--spacing);
+
+    .message-error {
+      margin-bottom: 0;
+    }
+
+    iframe {
+      max-width: 100%;
+    }
+  }
+}

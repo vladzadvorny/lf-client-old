@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'preact/hooks'
 
 import './Image.scss'
+
 import { filesUri } from '../../constants/config'
 import { useTranslate } from '../../hooks/useTranslate'
 import { agent } from '../../utils/agent'
+import { useAppState } from '../../state'
 
 import Dropzone from './Dropzone'
 
 const Image = ({ setImage, item }) => {
+  const { notification } = useAppState()
   const { t } = useTranslate()
-  const [error, setError] = useState(null)
+
   const [loading, setLoading] = useState(false)
   const [path, setPath] = useState('')
 
@@ -18,13 +21,12 @@ const Image = ({ setImage, item }) => {
     if (body.p) {
       setPath(body.p)
     }
-  })
+  }, [item])
 
   const onDrop = async (acceptedFiles, rejectedFiles) => {
-    setError(null)
-
     if (rejectedFiles.length) {
-      setError('Максимальный размер файла 2mb, форматы: .jpg и .png!')
+      notification.value =
+        'Максимальный размер файла 5mb, форматы: .jpg и .png!'
     } else {
       setLoading(true)
       const [file] = acceptedFiles
@@ -33,18 +35,12 @@ const Image = ({ setImage, item }) => {
       formData.append('file', file)
 
       const data = await agent('/upload', {
-        // headers: {
-        //   // 'Content-Type': false
-        // },
         method: 'POST',
         body: formData
       })
-      // const data = await res.json()
-
-      console.log('data', data)
 
       if (data.error) {
-        setError(data.error)
+        notification.value = data.error.message
       } else {
         setImage({ p: data.filePath })
         setPath(data.filePath)
@@ -64,8 +60,7 @@ const Image = ({ setImage, item }) => {
           className="dropzone"
           disableClick={loading}
         >
-          {/* {loading ? <Loading absolute /> : <div>{t('dropzone')}</div>} */}
-          {error && <span className="error-message">{error}</span>}
+          {loading ? <div aria-busy /> : <div>{t('editor.dropzone')}</div>}
         </Dropzone>
       ) : (
         <img src={`${filesUri}${path}`} alt="" />

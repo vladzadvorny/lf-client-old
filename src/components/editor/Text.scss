@@ -51,6 +51,7 @@
         box-shadow var(--transition);
       line-height: var(--line-height);
       color: var(--color);
+      margin: 0;
 
       &:focus,
       &:hover {

@@ -11,8 +11,9 @@
 
     .dropzone {
       outline: none;
-      border: 1px dashed var(--primary);
-      // background-color: lighten($primaryColor, 43);
+      border: 1px dashed var(--code-color);
+
+      background-color: var(--code-background-color);
       padding: var(--spacing);
       display: flex;
       justify-content: center;
@@ -31,7 +32,7 @@
       // }
 
       &:hover {
-        // background-color: lighten($primaryColor, 40);
+        background-color: var(--table-row-stripped-background-color);
       }
 
       div {
@@ -39,10 +40,12 @@
       }
 
       .error-message {
+        border-radius: var(--border-radius);
         position: absolute;
-        // color: $secondaryColor;
-        // background-color: lighten($secondaryColor, 48);
+        color: var(--primary-inverse);
+        background-color: var(--form-element-invalid-border-color);
         // z-index: 777;
+        // border-color: var(--form-element-invalid-border-color);
         top: 0;
         left: 0;
         right: 0;

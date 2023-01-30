@@ -8,9 +8,11 @@ import { useTranslate } from '../hooks/useTranslate'
 
 import Text from '../components/editor/Text'
 import Image from '../components/editor/Image'
+import Video from '../components/editor/Video'
 
 const Editor = () => {
   const { t } = useTranslate()
+
   useHead({
     title: `${t('editor.editor')}— ${siteName}`
   })
@@ -31,6 +33,20 @@ const Editor = () => {
         return _item
       })
     )
+
+  const moveItem = (from, to) => {
+    const newItems = [...items]
+    newItems.splice(to, 0, newItems.splice(from, 1)[0])
+
+    setItems(newItems)
+  }
+
+  const removeItem = index => {
+    const newItems = [...items]
+    newItems.splice(index, 1)
+
+    setItems(newItems)
+  }
 
   const addBoxItems = [
     {
@@ -61,12 +77,12 @@ const Editor = () => {
       }
     }
   ]
-  console.log(items)
+
   return (
     <div className="container editor-page">
       <input placeholder={t('editor.title')} />
 
-      {items.map(item => (
+      {items.map((item, index) => (
         <div className="item" key={item.id}>
           <div>
             {item.type === 'text' && (
@@ -81,6 +97,7 @@ const Editor = () => {
                 onBlur={console.log}
               />
             )}
+
             {item.type === 'image' && (
               <Image
                 item={item}
@@ -92,8 +109,49 @@ const Editor = () => {
                 }
               />
             )}
+
+            {item.type === 'video' && (
+              <Video
+                item={item}
+                setVideo={video =>
+                  changeItem({
+                    ...item,
+                    body: video
+                  })
+                }
+              />
+            )}
           </div>
-          <div>r</div>
+          <div>
+            <span
+              className="material-symbols-outlined"
+              role="presentation"
+              onClick={() => removeItem(index)}
+            >
+              close
+            </span>
+
+            <div>
+              <span
+                className={`material-symbols-outlined${
+                  index === 0 ? ' disable' : ''
+                }`}
+                role="presentation"
+                onClick={() => moveItem(index, index - 1)}
+              >
+                arrow_upward
+              </span>
+              <span
+                className={`material-symbols-outlined${
+                  index === items.length - 1 ? ' disable' : ''
+                }`}
+                role="presentation"
+                onClick={() => moveItem(index, index + 1)}
+              >
+                arrow_downward
+              </span>
+            </div>
+          </div>
         </div>
       ))}
 

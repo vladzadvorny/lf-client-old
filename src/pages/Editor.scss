@@ -43,13 +43,34 @@
 
   .item {
     display: flex;
+    margin-bottom: var(--spacing);
+    margin-right: -5px;
 
     & > div:nth-of-type(1) {
       flex: 1;
     }
 
     & > div:nth-of-type(2) {
-      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 16px;
+      // width: 30px;
+      align-items: center;
+      // background-color: aqua;
+
+      span {
+        cursor: pointer;
+      }
+
+      .disable {
+        display: none;
+      }
+
+      div {
+        margin-top: 6px;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }
