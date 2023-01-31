@@ -10,15 +10,19 @@ import Text from '../components/editor/Text'
 import Image from '../components/editor/Image'
 import Video from '../components/editor/Video'
 
+// https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
+
 const Editor = () => {
   const { t } = useTranslate()
 
   useHead({
-    title: `${t('editor.editor')}— ${siteName}`
+    title: `${t('editor.createPost')}— ${siteName}`
   })
   const [title, setTitle] = useState('')
   const [items, setItems] = useState([])
   const [error, setError] = useState(null)
+
+  console.log(items)
 
   const getId = () => Math.random().toString(36)
 
@@ -80,6 +84,7 @@ const Editor = () => {
 
   return (
     <div className="container editor-page">
+      <h3>{t('editor.createPost')}</h3>
       <input placeholder={t('editor.title')} />
 
       {items.map((item, index) => (
@@ -168,6 +173,26 @@ const Editor = () => {
             <i>{name}</i>
           </div>
         ))}
+      </div>
+
+      <div className="push" />
+      <div className="grid">
+        <button
+          className="secondary"
+          type="submit"
+          onClick={() => {}}
+          // aria-busy={loading}
+        >
+          {t('editor.saveAsDraft')}
+        </button>
+        <button
+          className="primary"
+          type="submit"
+          onClick={() => {}}
+          // aria-busy={loading}
+        >
+          {t('editor.publish')}
+        </button>
       </div>
     </div>
   )

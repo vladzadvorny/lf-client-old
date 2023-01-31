@@ -1,6 +1,6 @@
 {
   "editor": {
-    "editor": "Post editor",
+    "createPost": "Create Post",
     "dropzone": "Try dropping image here, or click to select file to upload",
     "title": "Post title",
     "text": "Text",

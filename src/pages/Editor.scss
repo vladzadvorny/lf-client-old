@@ -1,13 +1,16 @@
 .editor-page {
   box-shadow: var(--card-box-shadow);
   flex: 1;
-  padding: var(--spacing) !important;
+  padding: var(--spacing) var(--spacing) 0 var(--spacing) !important;
+  display: flex;
+  flex-direction: column;
 
   .add-box {
     padding-top: var(--spacing);
     display: flex;
     justify-content: center;
     padding-right: var(--spacing);
+    margin-bottom: var(--spacing);
 
     div {
       display: flex;
@@ -72,5 +75,10 @@
         flex-direction: column;
       }
     }
+  }
+
+  .push {
+    display: flex;
+    flex: 1;
   }
 }
