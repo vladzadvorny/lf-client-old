@@ -43,7 +43,7 @@ const Image = ({ changeItem, item }) => {
       if (data.error) {
         notification.value = data.error.message
       } else {
-        changeItem({ p: data.filePath })
+        changeItem({ path: data.filePath, id: data.id })
         setPath(data.filePath)
       }
       setLoading(false)

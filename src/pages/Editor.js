@@ -67,10 +67,11 @@ const Editor = () => {
         method: 'PUT',
         body: {
           title,
-          body: items
+          body: items,
+          status: 'published' // or draft
         }
       })
-
+      console.log(data)
       if (data.error) {
         notification.value = data.error.message
         setError(data.error)
