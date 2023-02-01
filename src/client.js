@@ -5,7 +5,7 @@ import App from './App'
 import { AppStateProvider } from './state'
 
 hydrate(
-  <TranslateProvider root="translations">
+  <TranslateProvider root="translations" lang="ru">
     <AppStateProvider>
       <App />
     </AppStateProvider>

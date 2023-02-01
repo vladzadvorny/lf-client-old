@@ -1,4 +1,22 @@
 {
+  "auth": {
+    "login": "Логин",
+    "register": "Регистрация",
+    "goToLogin": "Войти",
+    "goToRegister": "Перейти к регистрации",
+    "rememberMe": "Запомнить меня",
+    "welcome": "Добро пожаловать на Lily Family!",
+    "name": "Имя",
+    "email": "Емейл",
+    "password": "Пароль",
+    "passwordConfirm": "Подтверждение пароля",
+    "AUTH_ALL_MUST_BE_FILLED": "Все поля должны быть заполнены",
+    "AUTH_EMAIL_INCORRECT": "Неверный емейл",
+    "AUTH_NAME_IS_TAKEN": "Это имя уже занято",
+    "AUTH_EMAIL_IS_USE": "Этот емейл уже используется",
+    "AUTH_PASSWORDS_DO_NOT_MATCH": "Введённые пароли не совпадают",
+    "AUTH_INVALID_EMAIL_OR_PASSWORD": "Неверный емейл или пароль"
+  },
   "editor": {
     "createPost": "Создание поста",
     "dropzone": "Перенеси изображение сюда или кликни, а затем выбери",

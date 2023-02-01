@@ -3,16 +3,16 @@ import { useState } from 'preact/hooks'
 import { route } from 'preact-router'
 
 import { useAppState } from '../state'
-import { uri } from '../constants/config'
+import { uri, siteName } from '../constants/config'
+import { useTranslate } from '../hooks/useTranslate'
 
 import './Auth.scss'
 import { storage } from '../constants/storage'
 
 const Auth = () => {
+  const { t } = useTranslate()
   const { notification, me } = useAppState()
-  useHead({
-    title: 'Welcome to hoofd | 💭'
-  })
+
   const [isRegister, setIsRegister] = useState(false)
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
@@ -20,6 +20,10 @@ const Auth = () => {
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [error, setError] = useState(null)
+
+  useHead({
+    title: `${isRegister ? t('auth.register') : t('auth.login')} — ${siteName}`
+  })
 
   const send = async () => {
     setLoading(true)
@@ -46,7 +50,8 @@ const Auth = () => {
       }
 
       if (data.error) {
-        notification.value = data.error.message
+        notification.value = t(`auth.${data.error.message}`)
+
         setError(data.error)
       } else {
         localStorage.setItem(storage.token, data.token)
@@ -65,8 +70,8 @@ const Auth = () => {
       <article className="grid">
         <div>
           <hgroup>
-            <h1>{isRegister ? 'Register' : 'Login'}</h1>
-            <h2>A minimalist layout for Login pages</h2>
+            <h1>{isRegister ? t('auth.register') : t('auth.login')}</h1>
+            <h2>{t('auth.welcome')}</h2>
           </hgroup>
 
           <form onSubmit={e => e.preventDefault()}>
@@ -74,7 +79,7 @@ const Auth = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder={t('auth.name')}
                 aria-label="Name"
                 {...(error &&
                   error.fields.includes('name') && { ariaInvalid: true })}
@@ -87,7 +92,7 @@ const Auth = () => {
             <input
               type="email"
               name="email"
-              placeholder="Email address"
+              placeholder={t('auth.email')}
               aria-label="Email address"
               {...(error &&
                 error.fields.includes('email') && { ariaInvalid: true })}
@@ -98,7 +103,7 @@ const Auth = () => {
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder={t('auth.password')}
               aria-label="Password"
               {...(error &&
                 error.fields.includes('password') && { ariaInvalid: true })}
@@ -110,7 +115,7 @@ const Auth = () => {
               <input
                 type="password"
                 name="passwordConfirm"
-                placeholder="Password Confirm"
+                placeholder={t('auth.passwordConfirm')}
                 aria-label="passwordConfirm"
                 {...(error &&
                   error.fields.includes('passwordConfirm') && {
@@ -129,7 +134,7 @@ const Auth = () => {
                   id="remember"
                   name="remember"
                 />
-                Remember me
+                {t('auth.rememberMe')}
               </label>
             </fieldset>
             <button
@@ -140,16 +145,17 @@ const Auth = () => {
               }}
               aria-busy={loading}
             >
-              {isRegister ? 'Register' : 'Login'}
+              {isRegister ? t('auth.register') : t('auth.login')}
             </button>
             <button
               className={`outline ${isRegister ? 'primaruy' : 'secondary'}`}
               type="submit"
               onClick={() => {
                 setIsRegister(!isRegister)
+                setError(null)
               }}
             >
-              {isRegister ? 'Go to Login' : 'Go to Register'}
+              {isRegister ? t('auth.goToLogin') : t('auth.goToRegister')}
             </button>
           </form>
         </div>

@@ -12,31 +12,6 @@ import Text from '../components/editor/Text'
 import Image from '../components/editor/Image'
 import Video from '../components/editor/Video'
 
-// ;[
-//   {
-//     id: 'xmd6',
-//     type: 'text',
-//     body: {
-//       html: ''
-//     }
-//   },
-//   {
-//     id: 'prpw',
-//     type: 'image',
-//     body: {
-//       id: '',
-//       path: ''
-//     }
-//   },
-//   {
-//     id: '8q2q',
-//     type: 'video',
-//     body: {
-//       id: '',
-//       provider: ''
-//     }
-//   }
-// ]
 let timeout
 const Editor = () => {
   const { t } = useTranslate()
@@ -272,3 +247,29 @@ const Editor = () => {
 }
 
 export default Editor
+
+// ;[
+//   {
+//     id: 'xmd6',
+//     type: 'text',
+//     body: {
+//       html: ''
+//     }
+//   },
+//   {
+//     id: 'prpw',
+//     type: 'image',
+//     body: {
+//       id: '',
+//       path: ''
+//     }
+//   },
+//   {
+//     id: '8q2q',
+//     type: 'video',
+//     body: {
+//       id: '',
+//       provider: ''
+//     }
+//   }
+// ]
