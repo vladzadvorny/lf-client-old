@@ -3,13 +3,12 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    align-items: center;
+    // align-items: center;
     // margin-top: var(--spacing);
     // background-color: red;
-    border: 1px solid var(--form-element-border-color);
+
     height: 100%;
-    border-radius: var(--border-radius);
-    padding: 0 var(--spacing) var(--spacing) var(--spacing);
+    // background-color: aqua;
     // background-color: rgba(black, 0.04);
     // justify-content: space-between;
 
@@ -17,52 +16,63 @@
       max-width: 100%;
     }
 
-    span {
+    .input {
+      border-radius: var(--border-radius);
+      border: 1px solid var(--form-element-border-color);
+      padding: 0 var(--spacing) var(--spacing) var(--spacing);
       flex: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    & > div {
-      display: flex;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-      div {
-        border: 1px solid var(--primary);
-        border-radius: var(--border-radius);
-        margin-left: var(--spacing);
-        cursor: pointer;
-        width: 70px;
-        // background-color: var(--primary);
-        background-color: white;
+      span {
+        flex: 1;
         display: flex;
         align-items: center;
-        transition: background-color var(--transition),
-          border-color var(--transition), color var(--transition),
-          box-shadow var(--transition);
+      }
 
-        span {
-          margin: 0;
+      & > div {
+        display: flex;
+        width: 100%;
+
+        div {
+          border: 1px solid var(--primary);
+          border-radius: var(--border-radius);
+          margin-left: var(--spacing);
+          cursor: pointer;
+          width: 70px;
+          // background-color: var(--primary);
+          background-color: white;
           display: flex;
-          justify-content: center;
-          font-size: 30px;
-          // color: var(--primary-inverse);
-          color: var(--primary);
-        }
-
-        &:hover {
-          border-color: var(--primary-hover);
+          align-items: center;
+          transition: background-color var(--transition),
+            border-color var(--transition), color var(--transition),
+            box-shadow var(--transition);
 
           span {
-            color: var(--primary-hover);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            // color: var(--primary-inverse);
+            color: var(--primary);
+          }
+
+          &:hover {
+            border-color: var(--primary-hover);
+
+            span {
+              color: var(--primary-hover);
+            }
           }
         }
       }
-    }
 
-    input {
-      margin-bottom: 0 !important;
-      background-color: white;
+      input {
+        margin-bottom: 0 !important;
+        background-color: white;
+      }
     }
   }
 }

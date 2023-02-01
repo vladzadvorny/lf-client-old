@@ -41,7 +41,7 @@ const Video = ({ changeItem, item }) => {
   return (
     <div className="editor-video">
       {video.id === undefined ? (
-        <>
+        <div className="input">
           <span>Скопируй ссылку на видео и вставь сюда</span>
           <div>
             <input
@@ -63,7 +63,7 @@ const Video = ({ changeItem, item }) => {
               </span>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <YouTube id={video.id} />
       )}
