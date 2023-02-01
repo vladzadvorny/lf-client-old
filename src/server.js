@@ -21,10 +21,10 @@ app.use(async ctx => {
 })
 
 // renderer
-function renderer(route, state = {}) {
+function renderer(url, state = {}) {
   const rendered = render(
     <TranslateProvider translations={{ en }} lang="en">
-      <App route={route} />
+      <App url={url} />
     </TranslateProvider>
   )
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 import { Fragment } from 'preact'
-import { Router } from 'preact-router'
 import { useHead } from 'hoofd/preact'
 import { useEffect, useState } from 'preact/hooks'
 
@@ -8,27 +7,27 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Notification from './components/Notification'
 
-import Home from './pages/Home'
-import Auth from './pages/Auth'
-import Editor from './pages/Editor'
+import Routes from './Routes'
 
 import './App.scss'
 import { agent } from './utils/agent'
 import { storage } from './constants/storage'
 import { useAppState } from './state'
 
-const App = ({ route }) => {
+const App = ({ url }) => {
   useHead({
     language: 'ru'
   })
   const { me } = useAppState()
-  const [loading, setLoading] = useState(!true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     bootstrap()
   }, [])
 
   const bootstrap = async () => {
+    setLoading(true)
+
     try {
       const token = localStorage.getItem(storage.token)
 
@@ -52,11 +51,7 @@ const App = ({ route }) => {
     <Fragment>
       <Header />
       <main>
-        <Router url={route}>
-          <Home path="/" />
-          <Auth path="/auth" />
-          <Editor path="/editor" />
-        </Router>
+        <Routes url={url} />
       </main>
       <Footer />
       <Notification />
