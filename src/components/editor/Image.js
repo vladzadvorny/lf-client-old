@@ -9,12 +9,13 @@ import { useAppState } from '../../state'
 
 import Dropzone from './Dropzone'
 
-const Image = ({ setImage, item }) => {
+const Image = ({ changeItem, item }) => {
   const { notification } = useAppState()
   const { t } = useTranslate()
 
   const [loading, setLoading] = useState(false)
   const [path, setPath] = useState('')
+  const [isOnDrag, setIsOnDrag] = useState(false)
 
   useEffect(() => {
     const { body } = item
@@ -42,7 +43,7 @@ const Image = ({ setImage, item }) => {
       if (data.error) {
         notification.value = data.error.message
       } else {
-        setImage({ p: data.filePath })
+        changeItem({ p: data.filePath })
         setPath(data.filePath)
       }
       setLoading(false)
@@ -57,8 +58,10 @@ const Image = ({ setImage, item }) => {
           multiple={false}
           maxSize={5 * 1024 * 1024}
           accept="image/jpeg, image/png, image/gif, image/webp"
-          className="dropzone"
+          className={`dropzone${isOnDrag ? ' active' : ''}`}
           disableClick={loading}
+          onDragEnter={() => setIsOnDrag(true)}
+          onDragLeave={() => setIsOnDrag(false)}
         >
           {loading ? <div aria-busy /> : <div>{t('editor.dropzone')}</div>}
         </Dropzone>

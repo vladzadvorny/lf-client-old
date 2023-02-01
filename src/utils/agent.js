@@ -9,12 +9,17 @@ export const agent = async (...args) => {
   // request interceptor here
   const token = localStorage.getItem(storage.token)
 
+  const notFormData = config?.body && !(config?.body instanceof FormData)
+
   const response = await fetch(`${uri}${resource}`, {
     headers: {
-      // 'Content-Type': 'application/json',
+      ...(notFormData && { 'Content-Type': 'application/json' }),
       Authorization: `Bearer ${token}`
     },
-    ...config
+    ...config,
+    ...(notFormData && {
+      body: JSON.stringify(config.body)
+    })
   })
 
   // response interceptor here

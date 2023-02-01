@@ -5,12 +5,36 @@ import './Editor.scss'
 
 import { siteName } from '../constants/config'
 import { useTranslate } from '../hooks/useTranslate'
+import { agent } from '../utils/agent'
 
 import Text from '../components/editor/Text'
 import Image from '../components/editor/Image'
 import Video from '../components/editor/Video'
 
 // https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
+
+// [
+//   {
+//     id: 'zcz2j',
+//     type: 'text',
+//     body: 'fsas asfasdf asdfasdf asfasf '
+//   },
+//   {
+//     id: 'jzl9g',
+//     type: 'image',
+//     body: {
+//       p: '/p/4/ldlo2j53.jpg'
+//     }
+//   },
+//   {
+//     id: 'vi00w',
+//     type: 'video',
+//     body: {
+//       id: '-4HdVFZA6eE',
+//       provider: 'youtube'
+//     }
+//   }
+// ]
 
 const Editor = () => {
   const { t } = useTranslate()
@@ -21,10 +45,29 @@ const Editor = () => {
   const [title, setTitle] = useState('')
   const [items, setItems] = useState([])
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   console.log(items)
 
-  const getId = () => Math.random().toString(36)
+  const send = async () => {
+    setLoading(true)
+
+    try {
+      const data = await agent('/posts', {
+        method: 'PUT',
+        body: {
+          title,
+          body: items
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getId = () => Math.random().toString(36).slice(-4)
 
   const addItem = item => setItems([...items, item])
 
@@ -59,7 +102,7 @@ const Editor = () => {
       item: {
         id: getId(),
         type: 'text',
-        body: ''
+        body: { html: '' }
       }
     },
     {
@@ -85,18 +128,22 @@ const Editor = () => {
   return (
     <div className="container editor-page">
       <h3>{t('editor.createPost')}</h3>
-      <input placeholder={t('editor.title')} />
+      <input
+        placeholder={t('editor.title')}
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+      />
 
       {items.map((item, index) => (
         <div className="item" key={item.id}>
           <div>
             {item.type === 'text' && (
               <Text
-                html={item.body}
-                setHtml={html => {
+                item={item}
+                changeItem={body => {
                   changeItem({
                     ...item,
-                    body: html.replace(/(<\/?(?:a|b|i)[^>]*>)|<[^>]+>/gi, '$1')
+                    body
                   })
                 }}
                 onBlur={console.log}
@@ -106,10 +153,10 @@ const Editor = () => {
             {item.type === 'image' && (
               <Image
                 item={item}
-                setImage={image =>
+                changeItem={body =>
                   changeItem({
                     ...item,
-                    body: image
+                    body
                   })
                 }
               />
@@ -118,10 +165,10 @@ const Editor = () => {
             {item.type === 'video' && (
               <Video
                 item={item}
-                setVideo={video =>
+                changeItem={body =>
                   changeItem({
                     ...item,
-                    body: video
+                    body
                   })
                 }
               />
@@ -186,9 +233,9 @@ const Editor = () => {
           {t('editor.saveAsDraft')}
         </button>
         <button
-          className="primary"
+          className="primary outline"
           type="submit"
-          onClick={() => {}}
+          onClick={send}
           // aria-busy={loading}
         >
           {t('editor.publish')}

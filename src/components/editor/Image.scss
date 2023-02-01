@@ -3,17 +3,20 @@
     display: flex;
     flex: 1;
     align-items: center;
-    margin-top: var(--spacing);
+    // margin-top: var(--spacing);
     // margin-bottom: 5px;
     position: relative;
     // justify-content: center;
     flex-direction: column;
+    // background-color: red;
+    height: 100%;
 
     .dropzone {
       outline: none;
-      border: 1px dashed var(--code-color);
-
-      background-color: var(--code-background-color);
+      border: 1px dashed var(--form-element-border-color);
+      flex: 1;
+      // background-color: var(--code-background-color);
+      background-color: rgba(black, 0.04);
       padding: var(--spacing);
       display: flex;
       justify-content: center;
@@ -24,36 +27,19 @@
       // height: 90px;
       // margin-right: -40px;
       position: relative;
-      min-height: 100px;
+      // min-height: 100px;
       width: 100%;
 
       // span {
       //   text-align: center;
       // }
 
-      &:hover {
-        background-color: var(--table-row-stripped-background-color);
+      &:hover,
+      &.active {
+        background-color: rgba(black, 0.06);
       }
 
       div {
-        text-align: center;
-      }
-
-      .error-message {
-        border-radius: var(--border-radius);
-        position: absolute;
-        color: var(--primary-inverse);
-        background-color: var(--form-element-invalid-border-color);
-        // z-index: 777;
-        // border-color: var(--form-element-invalid-border-color);
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: var(--spacing);
         text-align: center;
       }
     }
@@ -62,11 +48,7 @@
       // width: 100%;
       // max-width: 50%;
       height: auto;
-      margin-bottom: var(--spacing);
-    }
-
-    .message-error {
-      margin-bottom: 0;
+      // margin-bottom: var(--spacing);
     }
   }
 }

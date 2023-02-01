@@ -2,7 +2,7 @@ import './Text.scss'
 
 import ContentEditable from './ContentEditable'
 
-const Text = ({ html, setHtml, onBlur }) => {
+const Text = ({ item, changeItem, onBlur }) => {
   // const [_html, _setHtml] = useState('');
 
   return (
@@ -33,8 +33,15 @@ const Text = ({ html, setHtml, onBlur }) => {
       <ContentEditable
         className="editable"
         tagName="pre"
-        html={html}
-        onChange={e => setHtml(e.target.value)}
+        html={item.body.html}
+        onChange={e =>
+          changeItem({
+            html: e.target.value.replace(
+              /(<\/?(?:a|b|i)[^>]*>)|<[^>]+>/gi,
+              '$1'
+            )
+          })
+        }
         onBlur={onBlur}
         onKeyDown={e => {
           if (e.keyCode === 13) {
