@@ -58,6 +58,7 @@ const config = {
               sourceMap: false
             }
           },
+          'postcss-loader',
           'sass-loader'
         ]
       }

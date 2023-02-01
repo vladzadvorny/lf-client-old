@@ -31,7 +31,9 @@
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-transform-react-jsx": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "@prefresh/webpack": "^3.3.4",
+    "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.2",
     "babel-plugin-jsx-pragmatic": "^1.0.2",
     "compression-webpack-plugin": "^10.0.0",
@@ -49,6 +51,8 @@
     "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.7.2",
     "null-loader": "^4.0.1",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2",
     "prettier": "^2.8.2",
     "raw-loader": "^4.0.2",
     "react-refresh": "^0.14.0",
@@ -66,5 +70,18 @@
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0",
     "webpack-stats-plugin": "^1.1.1"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 version"
+    ],
+    "production": [
+      "last 10 versions",
+      "> 5%",
+      "not dead"
+    ],
+    "ssr": [
+      "node 18"
+    ]
   }
 }

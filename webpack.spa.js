@@ -53,6 +53,7 @@ const config = {
           MiniCssExtractPlugin.loader,
           // 'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       }
@@ -62,7 +63,7 @@ const config = {
     new CopyPlugin({
       patterns: [{ from: 'public' }]
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new HtmlWebPackPlugin({
       template: './index.html'
     }),
