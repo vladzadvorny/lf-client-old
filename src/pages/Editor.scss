@@ -52,7 +52,12 @@
     margin-bottom: var(--spacing);
     margin-right: -5px;
     min-height: 120px;
-    // background-color: aqua;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition);
+
+    &.error {
+      background-color: #ffcdd2;
+    }
 
     & > div:nth-of-type(1) {
       flex: 1;

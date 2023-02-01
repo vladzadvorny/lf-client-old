@@ -1,43 +1,46 @@
 import { useHead } from 'hoofd/preact'
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 
 import './Editor.scss'
 
 import { siteName } from '../constants/config'
 import { useTranslate } from '../hooks/useTranslate'
 import { agent } from '../utils/agent'
+import { useAppState } from '../state'
 
 import Text from '../components/editor/Text'
 import Image from '../components/editor/Image'
 import Video from '../components/editor/Video'
 
-// https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
-
-// [
+// ;[
 //   {
-//     id: 'zcz2j',
+//     id: 'xmd6',
 //     type: 'text',
-//     body: 'fsas asfasdf asdfasdf asfasf '
-//   },
-//   {
-//     id: 'jzl9g',
-//     type: 'image',
 //     body: {
-//       p: '/p/4/ldlo2j53.jpg'
+//       html: ''
 //     }
 //   },
 //   {
-//     id: 'vi00w',
+//     id: 'prpw',
+//     type: 'image',
+//     body: {
+//       id: '',
+//       path: ''
+//     }
+//   },
+//   {
+//     id: '8q2q',
 //     type: 'video',
 //     body: {
-//       id: '-4HdVFZA6eE',
-//       provider: 'youtube'
+//       id: '',
+//       provider: ''
 //     }
 //   }
 // ]
-
+let timeout
 const Editor = () => {
   const { t } = useTranslate()
+  const { notification } = useAppState()
 
   useHead({
     title: `${t('editor.createPost')}— ${siteName}`
@@ -47,7 +50,14 @@ const Editor = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
-  console.log(items)
+  useEffect(() => {
+    if (error && error.message === 'POSTS_EMPTY_ITEMS') {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        setError(null)
+      }, 4000)
+    }
+  }, [error])
 
   const send = async () => {
     setLoading(true)
@@ -60,6 +70,11 @@ const Editor = () => {
           body: items
         }
       })
+
+      if (data.error) {
+        notification.value = data.error.message
+        setError(data.error)
+      }
     } catch (err) {
       console.log(err)
     } finally {
@@ -129,13 +144,23 @@ const Editor = () => {
     <div className="container editor-page">
       <h3>{t('editor.createPost')}</h3>
       <input
+        type="text"
+        name="title"
+        aria-label="Title"
+        {...(error && error.fields.includes('title') && { ariaInvalid: true })}
         placeholder={t('editor.title')}
         value={title}
         onChange={e => setTitle(e.target.value)}
+        onFocus={() => setError(null)}
       />
 
       {items.map((item, index) => (
-        <div className="item" key={item.id}>
+        <div
+          className={`item${
+            error && error.fields.includes(item.id) ? ' error' : ''
+          }`}
+          key={item.id}
+        >
           <div>
             {item.type === 'text' && (
               <Text
@@ -233,10 +258,10 @@ const Editor = () => {
           {t('editor.saveAsDraft')}
         </button>
         <button
-          className="primary outline"
+          className="primary"
           type="submit"
           onClick={send}
-          // aria-busy={loading}
+          aria-busy={loading}
         >
           {t('editor.publish')}
         </button>
