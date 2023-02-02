@@ -4,6 +4,7 @@ import serialize from 'serialize-javascript'
 import serve from 'koa-static'
 import { toStatic } from 'hoofd/preact'
 import { TranslateProvider } from '@denysvuika/preact-translate'
+import pretty from 'pretty'
 
 import App from './App'
 
@@ -17,7 +18,7 @@ app.use(serve(__dirname))
 app.use(async ctx => {
   console.log(ctx.request.url)
   ctx.type = 'html'
-  ctx.body = renderer(ctx.request.url, { hello: 10 })
+  ctx.body = pretty(renderer(ctx.request.url, { hello: 10 }), { ocd: true })
 })
 
 // renderer

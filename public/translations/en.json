@@ -24,6 +24,8 @@
     "text": "Text",
     "image": "Image",
     "video": "Video",
+    "bold": "Bold",
+    "italic": "Italic",
     "tag": "Tag",
     "clear": "Clear",
     "saveAsDraft": "Save as draft",

@@ -1,8 +1,10 @@
 import './Text.scss'
+import { useTranslate } from '../../hooks/useTranslate'
 
 import ContentEditable from './ContentEditable'
 
 const Text = ({ item, changeItem, onBlur }) => {
+  const { t } = useTranslate()
   // const [_html, _setHtml] = useState('');
 
   return (
@@ -16,7 +18,7 @@ const Text = ({ item, changeItem, onBlur }) => {
             document.execCommand('bold', false)
           }}
         >
-          Bold
+          {t('editor.bold')}
         </li>
         <li
           style={{ fontStyle: 'italic' }}
@@ -26,7 +28,7 @@ const Text = ({ item, changeItem, onBlur }) => {
             document.execCommand('italic', false)
           }}
         >
-          Italic
+          {t('editor.italic')}
         </li>
       </ul>
 

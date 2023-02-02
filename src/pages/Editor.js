@@ -88,7 +88,7 @@ const Editor = () => {
 
   const addBoxItems = [
     {
-      name: t('text'),
+      name: t('editor.text'),
       icon: 'text_snippet',
       item: {
         id: getId(),
@@ -97,7 +97,7 @@ const Editor = () => {
       }
     },
     {
-      name: t('image'),
+      name: t('editor.image'),
       icon: 'image',
       item: {
         id: getId(),
@@ -106,7 +106,7 @@ const Editor = () => {
       }
     },
     {
-      name: t('video'),
+      name: t('editor.video'),
       icon: 'videocam',
       item: {
         id: getId(),
