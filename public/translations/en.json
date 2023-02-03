@@ -29,6 +29,7 @@
     "tag": "Tag",
     "clear": "Clear",
     "saveAsDraft": "Save as draft",
-    "publish": "Publish"
+    "publish": "Publish",
+    "category": "Select a category..."
   }
 }

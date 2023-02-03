@@ -71,7 +71,7 @@ const Auth = () => {
         <div>
           <hgroup>
             <h1>{isRegister ? t('auth.register') : t('auth.login')}</h1>
-            <h2>{t('auth.welcome')}</h2>
+            <p>{t('auth.welcome')}</p>
           </hgroup>
 
           <form onSubmit={e => e.preventDefault()}>

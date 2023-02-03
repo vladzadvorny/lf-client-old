@@ -14,7 +14,7 @@ import Video from '../components/editor/Video'
 
 let timeout
 const Editor = () => {
-  const { t } = useTranslate()
+  const { t, lang } = useTranslate()
   const { notification } = useAppState()
 
   useHead({
@@ -24,6 +24,12 @@ const Editor = () => {
   const [items, setItems] = useState([])
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [categories, setCategories] = useState([])
+  const [categoryId, setCategoryId] = useState('')
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
 
   useEffect(() => {
     if (error && error.message === 'POSTS_EMPTY_ITEMS') {
@@ -43,7 +49,8 @@ const Editor = () => {
         body: {
           title,
           body: items,
-          status: 'published' // or draft
+          status: 'published', // or draft
+          categoryId
         }
       })
       console.log(data)
@@ -52,7 +59,19 @@ const Editor = () => {
         setError(data.error)
       }
     } catch (err) {
-      console.log(err)
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchCategories = async () => {
+    try {
+      const data = await agent(`/categories/${lang}`)
+      console.log(data)
+      setCategories(data.categories)
+    } catch (err) {
+      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -222,6 +241,28 @@ const Editor = () => {
           </div>
         ))}
       </div>
+
+      <select
+        id="category"
+        required
+        {...(error &&
+          error.fields.includes('category') && { ariaInvalid: true })}
+        onChange={e => {
+          setError(null)
+          setCategoryId(e.target.value)
+        }}
+        value={categoryId}
+        disabled={!categories.length}
+      >
+        <option value="" disabled selected>
+          {t('editor.category')}
+        </option>
+        {categories.map(item => (
+          <option key={item.id} value={item.id}>
+            {item.name}
+          </option>
+        ))}
+      </select>
 
       <div className="push" />
       <div className="grid">
