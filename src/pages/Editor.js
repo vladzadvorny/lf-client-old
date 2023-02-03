@@ -67,8 +67,7 @@ const Editor = () => {
 
   const fetchCategories = async () => {
     try {
-      const data = await agent(`/categories/${lang}`)
-      console.log(data)
+      const data = await agent('/categories')
       setCategories(data.categories)
     } catch (err) {
       console.error(err)
@@ -259,7 +258,7 @@ const Editor = () => {
         </option>
         {categories.map(item => (
           <option key={item.id} value={item.id}>
-            {item.name}
+            {item.name[lang]}
           </option>
         ))}
       </select>
