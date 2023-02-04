@@ -148,6 +148,28 @@ const Editor = () => {
         onFocus={() => setError(null)}
       />
 
+      <select
+        id="category"
+        required
+        {...(error &&
+          error.fields.includes('category') && { ariaInvalid: true })}
+        onChange={e => {
+          setError(null)
+          setCategoryId(e.target.value)
+        }}
+        value={categoryId}
+        disabled={!categories.length}
+      >
+        <option value="" disabled selected>
+          {t('editor.category')}
+        </option>
+        {categories.map(item => (
+          <option key={item.id} value={item.id}>
+            {item.name[lang]}
+          </option>
+        ))}
+      </select>
+
       {items.map((item, index) => (
         <div
           className={`item${
@@ -240,28 +262,6 @@ const Editor = () => {
           </div>
         ))}
       </div>
-
-      <select
-        id="category"
-        required
-        {...(error &&
-          error.fields.includes('category') && { ariaInvalid: true })}
-        onChange={e => {
-          setError(null)
-          setCategoryId(e.target.value)
-        }}
-        value={categoryId}
-        disabled={!categories.length}
-      >
-        <option value="" disabled selected>
-          {t('editor.category')}
-        </option>
-        {categories.map(item => (
-          <option key={item.id} value={item.id}>
-            {item.name[lang]}
-          </option>
-        ))}
-      </select>
 
       <div className="push" />
       <div className="grid">

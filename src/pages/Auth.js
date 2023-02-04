@@ -3,8 +3,9 @@ import { useState } from 'preact/hooks'
 import { route } from 'preact-router'
 
 import { useAppState } from '../state'
-import { uri, siteName } from '../constants/config'
+import { siteName } from '../constants/config'
 import { useTranslate } from '../hooks/useTranslate'
+import { agent } from '../utils/agent'
 
 import './Auth.scss'
 import { storage } from '../constants/storage'
@@ -30,23 +31,15 @@ const Auth = () => {
     try {
       let data
       if (isRegister) {
-        const res = await fetch(`${uri}/auth/local`, {
+        data = await agent('/auth/local', {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ name, email, password, passwordConfirm })
+          body: { name, email, password, passwordConfirm }
         })
-        data = await res.json()
       } else {
-        const res = await fetch(`${uri}/auth/local`, {
+        data = await agent('/auth/local', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
+          body: { email, password }
         })
-        data = await res.json()
       }
 
       if (data.error) {

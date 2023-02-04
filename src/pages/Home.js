@@ -1,90 +1,68 @@
+import { useEffect, useState } from 'preact/hooks'
 import { useHead } from 'hoofd/preact'
 
 import './Home.scss'
+import { useAppState } from '../state'
+import { agent } from '../utils/agent'
+import { filesUri } from '../constants/config'
 
 const Home = () => {
   useHead({
     title: 'Welcome to Lily Family'
-    // metas: [{ content: 'Jovi De Croock', name: 'description' }]
   })
+  const { posts } = useAppState()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+  const getPosts = async () => {
+    setLoading(true)
+
+    try {
+      const data = await agent('/posts')
+      console.log(data)
+      posts.value = data.posts
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="container home-page">
-      {/* <p>Count: {hello}</p>
-      <button
-        type="submit"
-        onClick={() => {
-          hello.value++
-        }}
-      >
-        click me!
-      </button>
-      <input /> */}
-      <article>
-        <header>
-          <div>hello</div>
-          <div>hello</div>
-        </header>
-        Body
-        <footer>Footer</footer>
-      </article>
-      <article>
-        <header>hello</header>
-        Body
-        <footer>Footer</footer>
-      </article>
-      <article>
-        <header>hello</header>
-        Body
-        <footer>Footer</footer>
-      </article>
-      <article>
-        <header>hello</header>
-        Body
-        <footer>Footer</footer>
-      </article>
+      {posts.value.map(post => (
+        <article key={post.id}>
+          <header>{post.title}</header>
+          <div>
+            {post.body.map(body => {
+              if (body.type === 'text') {
+                return (
+                  <p
+                    key={body.id}
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{ __html: body.body.html }}
+                  />
+                )
+              }
+              if (body.type === 'image') {
+                return (
+                  <img
+                    key={body.id}
+                    src={`${filesUri}${body.body.path}`}
+                    alt={post.title}
+                  />
+                )
+              }
+              return null
+            })}
+          </div>
 
-      {/* <form>
-        <div className="grid">
-          <label htmlFor="firstname">
-            First name
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="First name"
-              required
-            />
-          </label>
-
-          <label htmlFor="lastname">
-            Last name
-            <input
-              type="text"
-              id="lastname"
-              name="lastname"
-              placeholder="Last name"
-              required
-              aria-invalid
-            />
-          </label>
-        </div>
-
-        <label htmlFor="email">
-          Email address
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email address"
-            required
-          />
-        </label>
-
-        <small>We ll never share your email with anyone else.</small>
-
-        <button type="submit">Submit</button>
-      </form> */}
+          <footer>Footer</footer>
+        </article>
+      ))}
     </div>
   )
 }

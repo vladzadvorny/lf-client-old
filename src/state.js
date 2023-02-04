@@ -6,22 +6,12 @@ import { useContext } from 'preact/hooks'
 const createAppState = () => {
   const notification = signal(null)
   const me = signal({ id: null })
+  const posts = signal([])
 
-  return { notification, me }
+  return { notification, me, posts }
 }
 
 const state = createAppState()
-
-// auto hidding notifications
-let timeout
-effect(() => {
-  if (state.notification.value) {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      state.notification.value = null
-    }, 4000)
-  }
-})
 
 setTimeout(() => {
   if (typeof window !== 'undefined' && window.__STATE__) {
@@ -42,3 +32,14 @@ export const AppStateProvider = ({ children }) => (
 )
 
 export const useAppState = () => useContext(AppState)
+
+// auto hidding notifications
+let timeout
+effect(() => {
+  if (state.notification.value) {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      state.notification.value = null
+    }, 4000)
+  }
+})
