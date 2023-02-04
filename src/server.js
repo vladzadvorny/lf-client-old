@@ -10,22 +10,33 @@ import App from './App'
 
 import { assetsByChunkName } from '../dist-ssr/stats.json'
 import en from '../public/translations/en.json'
+import { uri } from './constants/config'
+
+// global.fetch = require('node-fetch').default
 
 const app = new Koa()
 
 app.use(serve(__dirname))
 
 app.use(async ctx => {
+  let state = {}
+
+  if (ctx.request.url === '/') {
+    const res = await fetch(`${uri}/posts`)
+    const data = await res.json()
+    state = { posts: data.posts }
+  }
+
   console.log(ctx.request.url)
   ctx.type = 'html'
-  ctx.body = pretty(renderer(ctx.request.url, { hello: 10 }), { ocd: true })
+  ctx.body = pretty(renderer(ctx.request.url, state), { ocd: true })
 })
 
 // renderer
 function renderer(url, state = {}) {
   const rendered = render(
     <TranslateProvider translations={{ en }} lang="en">
-      <App url={url} />
+      <App url={url} state={state} />
     </TranslateProvider>
   )
 

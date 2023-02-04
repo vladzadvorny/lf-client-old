@@ -14,19 +14,27 @@ import { agent } from './utils/agent'
 import { storage } from './constants/storage'
 import { useAppState } from './state'
 
-const App = ({ url }) => {
+const App = ({ url, state: _state }) => {
   useHead({
     language: 'ru'
   })
-  const { me } = useAppState()
-  const [loading, setLoading] = useState(false)
+  const state = useAppState()
+  const [loading, setLoading] = useState(!url)
+
+  if (typeof window === 'undefined') {
+    Object.keys(_state).forEach(key => {
+      if (state[key]) {
+        state[key].value = _state[key]
+      }
+    })
+  }
 
   useEffect(() => {
     bootstrap()
   }, [])
 
   const bootstrap = async () => {
-    setLoading(true)
+    // setLoading(true)
 
     try {
       const token = localStorage.getItem(storage.token)
@@ -34,7 +42,7 @@ const App = ({ url }) => {
       if (token) {
         const data = await agent('/me')
         console.log(data)
-        me.value = data.me
+        state.me.value = data.me
       }
     } catch (error) {
       console.log(error)

@@ -15,7 +15,10 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    getPosts()
+    // for ssr
+    if (!posts.value.length) {
+      getPosts()
+    }
   }, [])
 
   const getPosts = async () => {
@@ -23,7 +26,7 @@ const Home = () => {
 
     try {
       const data = await agent('/posts')
-      console.log(data)
+
       posts.value = data.posts
     } catch (error) {
       console.log(error)

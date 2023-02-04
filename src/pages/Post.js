@@ -8,11 +8,12 @@ import Post from '../components/Post'
 
 const PostPage = ({ uri }) => {
   const { posts } = useAppState()
-  const [data] = posts.value.filter(item => item.uri === uri)
   const [loading, setLoading] = useState(false)
   const [post, setPost] = useState(null)
 
   useEffect(() => {
+    const [data] = posts.value.filter(item => item.uri === uri)
+
     if (data) {
       setPost(data)
     } else {
@@ -24,10 +25,10 @@ const PostPage = ({ uri }) => {
     setLoading(true)
 
     try {
-      const res = await agent(`/posts/${uri}`)
+      const data = await agent(`/posts/${uri}`)
 
-      posts.value = [...posts.value, res.post]
-      setPost(res.post)
+      posts.value = [...posts.value, data.post]
+      setPost(data.post)
     } catch (error) {
       console.log(error)
     } finally {
