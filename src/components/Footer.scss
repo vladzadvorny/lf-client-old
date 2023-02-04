@@ -1,9 +1,10 @@
 .footer {
   display: flex;
   justify-content: center;
-  height: var(--footer-height);
+  // height: var(--footer-height);
   background-color: var(--card-sectionning-background-color);
   box-shadow: var(--card-box-shadow);
+  padding: calc(var(--block-spacing-vertical) / 2.5) var(--spacing);
 
   &-container {
     align-items: center;

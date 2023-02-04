@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link, route } from 'preact-router'
+// eslint-disable-next-line no-unused-vars
+import { Fragment } from 'preact'
 
 import './Header.scss'
 
@@ -34,18 +36,25 @@ const Header = () => {
               </Link>
             </li>
           ) : (
-            <li role="list" dir="rtl">
-              <a href="#" aria-haspopup="listbox">
-                {me.value.name}
-              </a>
-              <ul role="listbox">
-                <li>
-                  <a href="#" onClick={logOut}>
-                    Log out
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <>
+              <li>
+                <Link href="/editor" className="login" activeClassName="active">
+                  Editor
+                </Link>
+              </li>
+              <li role="list" dir="rtl">
+                <a href="#" aria-haspopup="listbox">
+                  {me.value.name}
+                </a>
+                <ul role="listbox">
+                  <li>
+                    <a href="#" onClick={logOut}>
+                      Log out
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </>
           )}
         </ul>
       </nav>

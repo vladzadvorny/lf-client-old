@@ -6,12 +6,14 @@ import { useAppState } from './state'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Editor from './pages/Editor'
+import Post from './pages/Post'
 
 const Routes = ({ url }) => {
   return (
     <Router url={url}>
       {/* public routes */}
       <Home path="/" />
+      <Post path="/post/:uri" />
 
       {/* these routes should only be accessible when the user IS NOT logged in */}
       <OnlyUnauthRoute path="/auth" component={() => <Auth />} />
