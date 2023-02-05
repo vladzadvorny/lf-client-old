@@ -16,7 +16,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    // for ssr
     if (posts.value.length <= 1) {
       getPosts()
     }
@@ -34,6 +33,10 @@ const Home = () => {
     } finally {
       setLoading(false)
     }
+  }
+
+  if (loading) {
+    return <div className="loader" aria-busy />
   }
 
   return (

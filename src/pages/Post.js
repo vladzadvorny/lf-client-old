@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useMemo } from 'preact/hooks'
 
 import './Post.scss'
 import { useAppState } from '../state'
@@ -10,39 +10,33 @@ import Post from '../components/Post'
 
 const PostPage = ({ uri }) => {
   const { posts } = useAppState()
-  const [loading, setLoading] = useState(false)
-  const [post, setPost] = useState(null)
+
+  const [post] = useMemo(
+    () => posts.value.filter(item => item.uri === uri),
+    [posts.value]
+  )
+
   useMeta({
     title: post ? `${post.title} — ${siteName}` : siteName
-    // meta: [{ name: 'description', content: 'hello world' }] TODO:
   })
 
   useEffect(() => {
-    const [data] = posts.value.filter(item => item.uri === uri)
-
-    if (data) {
-      setPost(data)
-    } else {
+    if (!post) {
       getPost()
     }
   }, [])
 
   const getPost = async () => {
-    setLoading(true)
-
     try {
-      const data = await agent(`/posts/${uri}`)
+      const res = await agent(`/posts/${uri}`)
 
-      posts.value = [...posts.value, data.post]
-      setPost(data.post)
+      posts.value = [res.post]
     } catch (error) {
       console.log(error)
-    } finally {
-      setLoading(false)
     }
   }
 
-  if (!post || loading) {
+  if (!post) {
     return <div className="loader" aria-busy />
   }
 

@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import { Fragment } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 
 import Header from './components/Header'
@@ -58,14 +57,14 @@ const App = ({ url, state: _state }) => {
   }
 
   return (
-    <Fragment>
+    <div id="app">
       <Header />
       <main>
         <Routes url={url} />
       </main>
       <Footer />
       <Notification />
-    </Fragment>
+    </div>
   )
 }
 

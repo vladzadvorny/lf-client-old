@@ -20,14 +20,21 @@ app.use(serve(__dirname))
 
 app.use(async ctx => {
   let state = {}
+  const { url } = ctx.request
 
-  if (ctx.request.url === '/') {
+  if (url === '/') {
     const res = await fetch(`${uri}/posts`)
     const data = await res.json()
     state = { posts: data.posts }
   }
 
-  console.log(ctx.request.url)
+  if (url.includes('/post/')) {
+    const [, , _uri] = url.split('/')
+    const res = await fetch(`${uri}/posts/${_uri}`)
+    const data = await res.json()
+    state = { posts: [data.post] }
+  }
+
   ctx.type = 'html'
   ctx.body = pretty(renderer(ctx.request.url, state), { ocd: true })
 })

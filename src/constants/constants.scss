@@ -24,3 +24,11 @@ $viewports: (
   lg: 920px,
   xl: 'null'
 ) !default;
+
+/* Custom Class-less version for React */
+
+// Set the root element
+$semantic-root-element: '#app';
+
+// Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+$enable-semantic-container: true;
