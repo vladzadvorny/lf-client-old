@@ -13,6 +13,7 @@ import { useMeta } from './utils/meta'
 import { storage } from './constants/storage'
 import { useAppState } from './state'
 import { useTranslate } from './hooks/useTranslate'
+import { isBrowser } from './constants/config'
 
 const App = ({ url, state: _state }) => {
   const { lang } = useTranslate()
@@ -22,7 +23,7 @@ const App = ({ url, state: _state }) => {
   const state = useAppState()
   const [loading, setLoading] = useState(!url)
 
-  if (typeof window === 'undefined') {
+  if (!isBrowser) {
     Object.keys(_state).forEach(key => {
       if (state[key]) {
         state[key].value = _state[key]

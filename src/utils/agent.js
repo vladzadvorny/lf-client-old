@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable dot-notation */
-
 import { uri } from '../constants/config'
 import { storage } from '../constants/storage'
 

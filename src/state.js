@@ -2,6 +2,7 @@
 import { signal, effect } from '@preact/signals'
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
+import { isBrowser } from './constants/config'
 
 const createAppState = () => {
   const notification = signal(null)
@@ -14,7 +15,7 @@ const createAppState = () => {
 const state = createAppState()
 
 setTimeout(() => {
-  if (typeof window !== 'undefined' && window.__STATE__) {
+  if (isBrowser && window.__STATE__) {
     Object.keys(window.__STATE__).forEach(key => {
       if (state[key]) {
         state[key].value = window.__STATE__[key]

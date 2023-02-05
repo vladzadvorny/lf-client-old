@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
+import { isBrowser } from '../constants/config'
 
 export const Context = createContext({})
 
@@ -12,11 +13,11 @@ export const MetaProvider = ({ children, context }) => {
 }
 
 export const useMeta = meta => {
-  if (typeof window !== 'undefined' && meta.title) {
+  if (isBrowser && meta.title) {
     document.title = meta.title
   }
 
-  if (typeof window !== 'undefined') return
+  if (isBrowser) return
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const context = useContext(Context)
