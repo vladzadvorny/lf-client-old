@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'preact/hooks'
-import { useHead } from 'hoofd/preact'
 
 import './Home.scss'
 import { useAppState } from '../state'
 import { agent } from '../utils/agent'
+import { useMeta } from '../utils/meta'
 
 import Post from '../components/Post'
 
 const Home = () => {
-  useHead({
+  useMeta({
     title: 'Welcome to Lily Family'
+    // meta: [{ name: 'description', content: 'hello world' }] TODO:
   })
   const { posts } = useAppState()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     // for ssr
-    if (!posts.value.length) {
+    if (posts.value.length <= 1) {
       getPosts()
     }
   }, [])

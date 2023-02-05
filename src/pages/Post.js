@@ -3,6 +3,8 @@ import { useEffect, useState } from 'preact/hooks'
 import './Post.scss'
 import { useAppState } from '../state'
 import { agent } from '../utils/agent'
+import { useMeta } from '../utils/meta'
+import { siteName } from '../constants/config'
 
 import Post from '../components/Post'
 
@@ -10,6 +12,10 @@ const PostPage = ({ uri }) => {
   const { posts } = useAppState()
   const [loading, setLoading] = useState(false)
   const [post, setPost] = useState(null)
+  useMeta({
+    title: post ? `${post.title} — ${siteName}` : siteName
+    // meta: [{ name: 'description', content: 'hello world' }] TODO:
+  })
 
   useEffect(() => {
     const [data] = posts.value.filter(item => item.uri === uri)

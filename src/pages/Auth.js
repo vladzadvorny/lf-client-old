@@ -1,4 +1,3 @@
-import { useHead } from 'hoofd/preact'
 import { useState } from 'preact/hooks'
 import { route } from 'preact-router'
 
@@ -9,6 +8,7 @@ import { agent } from '../utils/agent'
 
 import './Auth.scss'
 import { storage } from '../constants/storage'
+import { useMeta } from '../utils/meta'
 
 const Auth = () => {
   const { t } = useTranslate()
@@ -22,7 +22,7 @@ const Auth = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [error, setError] = useState(null)
 
-  useHead({
+  useMeta({
     title: `${isRegister ? t('auth.register') : t('auth.login')} — ${siteName}`
   })
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 import { Fragment } from 'preact'
-import { useHead } from 'hoofd/preact'
 import { useEffect, useState } from 'preact/hooks'
 
 import Header from './components/Header'
@@ -11,12 +10,15 @@ import Routes from './Routes'
 
 import './App.scss'
 import { agent } from './utils/agent'
+import { useMeta } from './utils/meta'
 import { storage } from './constants/storage'
 import { useAppState } from './state'
+import { useTranslate } from './hooks/useTranslate'
 
 const App = ({ url, state: _state }) => {
-  useHead({
-    language: 'ru'
+  const { lang } = useTranslate()
+  useMeta({
+    lang
   })
   const state = useAppState()
   const [loading, setLoading] = useState(!url)

@@ -1,4 +1,3 @@
-import { useHead } from 'hoofd/preact'
 import { useEffect, useState } from 'preact/hooks'
 
 import './Editor.scss'
@@ -6,6 +5,7 @@ import './Editor.scss'
 import { siteName } from '../constants/config'
 import { useTranslate } from '../hooks/useTranslate'
 import { agent } from '../utils/agent'
+import { useMeta } from '../utils/meta'
 import { useAppState } from '../state'
 
 import Text from '../components/editor/Text'
@@ -17,8 +17,8 @@ const Editor = () => {
   const { t, lang } = useTranslate()
   const { notification } = useAppState()
 
-  useHead({
-    title: `${t('editor.createPost')}— ${siteName}`
+  useMeta({
+    title: `${t('editor.createPost')} — ${siteName}`
   })
   const [title, setTitle] = useState('')
   const [items, setItems] = useState([])
