@@ -2,7 +2,7 @@
 import { signal, effect } from '@preact/signals'
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
-import { isBrowser } from './constants/config'
+import { isBrowser, isProduction } from './constants/config'
 
 const createAppState = () => {
   const notification = signal(null)
@@ -44,3 +44,34 @@ effect(() => {
     }, 4000)
   }
 })
+
+// redux devtools
+if (isBrowser && !isProduction) {
+  const devTools = {}
+
+  window.__REDUX_DEVTOOLS_EXTENSION__({ latency: 0 })
+  devTools.current = window.__REDUX_DEVTOOLS_EXTENSION__.connect()
+
+  devTools.current.init()
+
+  const obj = {}
+  const flags = {}
+
+  effect(() => {
+    Object.keys(state).forEach(key => {
+      obj[key] = state[key].value
+    })
+  })
+
+  Object.keys(state).forEach(key => {
+    effect(() => {
+      // eslint-disable-next-line prefer-destructuring
+      const value = state[key].value
+      if (flags[key]) {
+        devTools.current.send(key, { ...obj, [key]: value })
+      } else {
+        flags[key] = true
+      }
+    })
+  })
+}
