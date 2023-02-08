@@ -16,6 +16,8 @@ const PostPage = ({ uri }) => {
     [posts.value]
   )
 
+  console.log(post, uri)
+
   useMeta({
     title: post ? `${post.title} — ${siteName}` : siteName
   })

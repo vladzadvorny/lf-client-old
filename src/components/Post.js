@@ -3,6 +3,8 @@ import { Link } from 'preact-router'
 import './Post.scss'
 import { filesUri } from '../constants/config'
 
+import Likes from './Likes'
+
 const Post = ({ data, single }) => {
   return (
     <article className="post">
@@ -39,7 +41,9 @@ const Post = ({ data, single }) => {
         })}
       </div>
 
-      <footer>Footer</footer>
+      <footer>
+        <Likes data={data} />
+      </footer>
     </article>
   )
 }
