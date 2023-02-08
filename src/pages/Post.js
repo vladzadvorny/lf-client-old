@@ -10,6 +10,7 @@ import Post from '../components/Post'
 
 const PostPage = ({ uri }) => {
   const { posts } = useAppState()
+  console.log(posts.value)
 
   const [post] = useMemo(
     () => posts.value.filter(item => item.uri === uri),

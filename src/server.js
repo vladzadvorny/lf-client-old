@@ -32,6 +32,7 @@ app.use(async ctx => {
     const [, , _uri] = url.split('/')
     const res = await fetch(`${uri}/posts/${_uri}`)
     const data = await res.json()
+    console.log(data, uri, _uri)
     state = { posts: [data.post] }
   }
 
@@ -77,7 +78,10 @@ function renderer(url, state = {}) {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
       <meta name="msapplication-TileColor" content="#da532c">
       <meta name="theme-color" content="#ffffff">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+      <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+      />
       ${stylesheets
         .map(f => `<link rel="stylesheet" type="text/css" href="/${f}">`)
         .join('\n')}

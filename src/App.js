@@ -42,9 +42,21 @@ const App = ({ url, state: _state }) => {
       const token = localStorage.getItem(storage.token)
 
       if (token) {
-        const data = await agent('/me')
+        const data = await agent(
+          state.posts.value.length
+            ? `/me?postIds=${state.posts.value.map(item => item.id).join(',')}`
+            : '/me'
+        )
         console.log(data)
         state.me.value = data.me
+        state.posts.value = state.posts.value.map(post =>
+          data.liked_post_ids.includes(post.id)
+            ? {
+                ...post,
+                my_like: true
+              }
+            : post
+        )
       }
     } catch (error) {
       console.log(error)
