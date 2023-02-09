@@ -12,7 +12,7 @@ import { useMeta } from '../utils/meta'
 
 const Auth = () => {
   const { t } = useTranslate()
-  const { notification, me } = useAppState()
+  const { notification, me, posts } = useAppState()
 
   const [isRegister, setIsRegister] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -38,7 +38,7 @@ const Auth = () => {
       } else {
         data = await agent('/auth/local', {
           method: 'POST',
-          body: { email, password }
+          body: { email, password, postIds: posts.value.map(item => item.id) }
         })
       }
 
@@ -48,8 +48,18 @@ const Auth = () => {
         setError(data.error)
       } else {
         localStorage.setItem(storage.token, data.token)
-        route('/')
+
         me.value = data.me
+        posts.value = posts.value.map(post =>
+          data.liked_post_ids.includes(post.id)
+            ? {
+                ...post,
+                my_like: true
+              }
+            : post
+        )
+
+        route('/')
       }
     } catch (err) {
       console.log(err)

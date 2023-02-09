@@ -47,7 +47,7 @@ const App = ({ url, state: _state }) => {
             ? `/me?postIds=${state.posts.value.map(item => item.id).join(',')}`
             : '/me'
         )
-        console.log(data)
+
         state.me.value = data.me
         state.posts.value = state.posts.value.map(post =>
           data.liked_post_ids.includes(post.id)

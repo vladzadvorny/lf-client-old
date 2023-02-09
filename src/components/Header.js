@@ -9,11 +9,12 @@ import { useAppState } from '../state'
 import { storage } from '../constants/storage'
 
 const Header = () => {
-  const { me } = useAppState()
+  const { me, posts } = useAppState()
 
   const logOut = () => {
     localStorage.removeItem(storage.token)
     me.value = { id: null }
+    posts.value = posts.value.map(post => ({ ...post, my_like: false }))
     route('/')
   }
 

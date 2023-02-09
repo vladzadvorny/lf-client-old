@@ -13,27 +13,24 @@ const Likes = ({ data }) => {
     setLoading(true)
 
     try {
-      const data = await agent('/likes/post', {
+      const res = await agent('/likes/post', {
         method: 'POST',
         body: { postId }
       })
-      console.log(data)
 
-      posts.value = [
-        ...posts.value.map(item =>
-          item.id === postId
-            ? {
-                ...item,
-                ...(data.deleted
-                  ? { my_like: false, likes: item.likes - 1 }
-                  : {
-                      my_like: true,
-                      likes: item.likes + 1
-                    })
-              }
-            : item
-        )
-      ]
+      posts.value = posts.value.map(item =>
+        item.id === postId
+          ? {
+              ...item,
+              ...(res.deleted
+                ? { my_like: false, likes: item.likes - 1 }
+                : {
+                    my_like: true,
+                    likes: item.likes + 1
+                  })
+            }
+          : item
+      )
     } catch (error) {
       console.log(error)
     } finally {
