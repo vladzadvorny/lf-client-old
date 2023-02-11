@@ -1,16 +1,26 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect, useMemo } from 'preact/hooks'
 
 import './Post.scss'
 import { useAppState } from '../state'
 import { agent } from '../utils/agent'
 import { useMeta } from '../utils/meta'
-import { siteName } from '../constants/config'
+import { isBrowser, siteName } from '../constants/config'
 
 import Post from '../components/Post'
 
 const PostPage = ({ uri }) => {
   const { posts } = useAppState()
-  console.log(posts.value)
+
+  useEffect(() => {
+    if (isBrowser) {
+      let scrollTop = 0
+      if (location.hash) {
+        scrollTop = document.querySelector(location.hash).offsetTop
+      }
+      window.scrollTo({ top: scrollTop })
+    }
+  }, [])
 
   const [post] = useMemo(
     () => posts.value.filter(item => item.uri === uri),
@@ -46,6 +56,7 @@ const PostPage = ({ uri }) => {
   return (
     <div className="container post-page">
       <Post data={post} single />
+      <h2 id="comments">comments</h2>
     </div>
   )
 }

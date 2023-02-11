@@ -1,14 +1,20 @@
-import { Link } from 'preact-router'
+import { Link, route } from 'preact-router'
 
 import './Post.scss'
 import { filesUri } from '../constants/config'
+import { useTranslate } from '../hooks/useTranslate'
 
 import Likes from './Likes'
 
 const Post = ({ data, single }) => {
+  const { lang } = useTranslate()
+
   return (
     <article className="post">
       <header>
+        <Link href={`/categories/${data.category.uri}`}>
+          {data.category.name[lang]}
+        </Link>
         {single ? (
           <h2>{data.title}</h2>
         ) : (
@@ -43,6 +49,16 @@ const Post = ({ data, single }) => {
 
       <footer>
         <Likes data={data} />
+        <div
+          className="comment-count"
+          role="presentation"
+          onClick={() => {
+            route(`/post/${data.uri}#comments`)
+          }}
+        >
+          <i>10</i>
+          <span className="material-symbols-outlined">chat_bubble</span>
+        </div>
       </footer>
     </article>
   )
