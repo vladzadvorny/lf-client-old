@@ -10,6 +10,7 @@
     "email": "Email address",
     "password": "Password",
     "passwordConfirm": "Password Confirm",
+    "logOut": "Log Out",
     "AUTH_ALL_MUST_BE_FILLED": "All fields must be filled",
     "AUTH_EMAIL_INCORRECT": "Incorrect email",
     "AUTH_NAME_IS_TAKEN": "This name is already taken",
@@ -31,5 +32,9 @@
     "saveAsDraft": "Save as draft",
     "publish": "Publish",
     "category": "Select a category..."
+  },
+  "settings": {
+    "settings": "Settings",
+    "interfaceLanguage": "Interface language"
   }
 }

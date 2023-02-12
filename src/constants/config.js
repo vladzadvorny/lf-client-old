@@ -8,3 +8,4 @@ export const port = 3000
 export const siteName = 'Lily Family'
 export const filesUri = `${baseUri}/files`
 export const isBrowser = typeof window !== 'undefined'
+export const languages = ['en', 'ru']

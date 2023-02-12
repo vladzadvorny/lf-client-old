@@ -8,26 +8,25 @@ import { useMeta } from '../utils/meta'
 import { isBrowser, siteName } from '../constants/config'
 
 import Post from '../components/Post'
+import Comments from '../components/Comments'
 
 const PostPage = ({ uri }) => {
   const { posts } = useAppState()
-
-  useEffect(() => {
-    if (isBrowser) {
-      let scrollTop = 0
-      if (location.hash) {
-        scrollTop = document.querySelector(location.hash).offsetTop
-      }
-      window.scrollTo({ top: scrollTop })
-    }
-  }, [])
 
   const [post] = useMemo(
     () => posts.value.filter(item => item.uri === uri),
     [posts.value]
   )
 
-  console.log(post, uri)
+  useEffect(() => {
+    if (isBrowser && post) {
+      let scrollTop = 0
+      if (location.hash) {
+        scrollTop = document.querySelector(location.hash).offsetTop
+      }
+      window.scrollTo({ top: scrollTop })
+    }
+  }, [posts.value])
 
   useMeta({
     title: post ? `${post.title} — ${siteName}` : siteName
@@ -56,7 +55,7 @@ const PostPage = ({ uri }) => {
   return (
     <div className="container post-page">
       <Post data={post} single />
-      <h2 id="comments">comments</h2>
+      <Comments postId={post.id} />
     </div>
   )
 }

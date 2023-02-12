@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Editor from './pages/Editor'
 import Post from './pages/Post'
+import Settings from './pages/Settings'
 
 const Routes = ({ url }) => {
   return (
@@ -20,6 +21,7 @@ const Routes = ({ url }) => {
 
       {/* these routes should only be accessible when the user IS logged in */}
       <PrivateRoute path="/editor" component={() => <Editor />} />
+      <PrivateRoute path="/settings" component={() => <Settings />} />
     </Router>
   )
 }

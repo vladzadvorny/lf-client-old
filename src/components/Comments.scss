@@ -1,0 +1,7 @@
+.comments {
+  box-shadow: var(--card-box-shadow);
+  background: var(--card-background-color);
+  margin: var(--block-spacing-vertical) 0;
+  padding: calc(var(--block-spacing-vertical) / 2)
+    var(--block-spacing-horizontal);
+}

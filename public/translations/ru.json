@@ -10,6 +10,7 @@
     "email": "Емейл",
     "password": "Пароль",
     "passwordConfirm": "Подтверждение пароля",
+    "logOut": "Выйти",
     "AUTH_ALL_MUST_BE_FILLED": "Все поля должны быть заполнены",
     "AUTH_EMAIL_INCORRECT": "Неверный емейл",
     "AUTH_NAME_IS_TAKEN": "Это имя уже занято",
@@ -31,5 +32,9 @@
     "saveAsDraft": "Сохранить как черновик",
     "publish": "Опубликовать",
     "category": "Выбери категорию..."
+  },
+  "settings": {
+    "settings": "Настройки",
+    "interfaceLanguage": "Язык интерфейса"
   }
 }

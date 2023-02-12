@@ -1,4 +1,8 @@
 .post {
+  img {
+    margin-bottom: 26px;
+  }
+
   header {
     padding: calc(var(--block-spacing-vertical) / 2)
       var(--block-spacing-horizontal);
