@@ -10,8 +10,8 @@
     align-items: center;
 
     img {
-      width: 130px;
-      height: 130px;
+      width: calc(var(--nav-link-spacing-vertical) * 12);
+      height: calc(var(--nav-link-spacing-vertical) * 12);
       border-radius: 50%;
       margin-right: var(--spacing);
       margin-bottom: var(--spacing);

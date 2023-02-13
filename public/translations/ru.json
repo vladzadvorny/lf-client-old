@@ -16,7 +16,8 @@
     "AUTH_NAME_IS_TAKEN": "Это имя уже занято",
     "AUTH_EMAIL_IS_USE": "Этот емейл уже используется",
     "AUTH_PASSWORDS_DO_NOT_MATCH": "Введённые пароли не совпадают",
-    "AUTH_INVALID_EMAIL_OR_PASSWORD": "Неверный емейл или пароль"
+    "AUTH_INVALID_EMAIL_OR_PASSWORD": "Неверный емейл или пароль",
+    "AUTH_PASSWORD_INCORRECT": "Минимальная длина пароля 5 символов"
   },
   "editor": {
     "createPost": "Создание поста",
@@ -40,7 +41,11 @@
     "changePassword": "Смена пароля",
     "oldPassword": "Старый пароль",
     "newPassword": "Новый пароль",
-    "newPasswordConfirm": "Подтверждение нового пароля"
+    "newPasswordConfirm": "Подтверждение нового пароля",
+    "birthday": "День рождения",
+    "gender": "Пол",
+    "male": "Мужской",
+    "female": "Женский"
   },
   "common": {
     "save": "Сохранить",

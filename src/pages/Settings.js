@@ -5,7 +5,8 @@ import { useTranslate } from '../hooks/useTranslate'
 import {
   isBrowser,
   languages as availableLanguages,
-  filesUri
+  filesUri,
+  genders
 } from '../constants/config'
 import languages from '../constants/languages'
 import { agent } from '../utils/agent'
@@ -23,11 +24,11 @@ const Settings = () => {
   const [name, setName] = useState(me.value.name)
   const [email, setEmail] = useState(me.value.email)
   const [userpic, setUserpic] = useState(null)
+  const [birthday, setBirthday] = useState(me.value.birthday)
+  const [gender, setGender] = useState(me.value.gender)
   const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('')
-
-  console.log(userpic)
 
   useEffect(() => {
     if (userpic) {
@@ -53,8 +54,6 @@ const Settings = () => {
       me.value = { ...me.value, userpic: data.filePath }
     }
   }
-
-  console.log(email, name)
 
   return (
     <div className="container settings-page">
@@ -109,6 +108,49 @@ const Settings = () => {
           onInput={e => setEmail(e.target.value)}
           onFocus={() => setError(null)}
         />
+      </label>
+
+      <label htmlFor="birthday">
+        {t('settings.birthday')}
+        <input
+          type="date"
+          id="birthday"
+          name="birthday"
+          min="1945-01-01"
+          max="2014-12-31"
+          aria-label="Birthday"
+          {...(error &&
+            error.fields.includes('birthday') && { ariaInvalid: true })}
+          value={birthday}
+          onInput={e => setBirthday(e.target.value)}
+          onFocus={() => setError(null)}
+        />
+      </label>
+
+      <label htmlFor="gender">
+        {t('settings.gender')}
+        <select
+          id="gender"
+          required
+          value={gender}
+          {...(error &&
+            error.fields.includes('gender') && {
+              ariaInvalid: true
+            })}
+          onChange={e => {
+            setError(null)
+            setGender(e.target.value)
+          }}
+        >
+          <option value="" disabled selected>
+            ...
+          </option>
+          {genders.map(item => (
+            <option key={item} value={item}>
+              {t(`settings.${item}`)}
+            </option>
+          ))}
+        </select>
       </label>
 
       <label htmlFor="interfaceLanguage">

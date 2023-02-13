@@ -9,6 +9,7 @@ import { useAppState } from '../state'
 import { storage } from '../constants/storage'
 import { useTranslate } from '../hooks/useTranslate'
 import { filesUri } from '../constants/config'
+import userColors from '../constants/userColors'
 
 const getUserpicPath = path => {
   const [start, end] = path.split('.')
@@ -56,10 +57,21 @@ const Header = () => {
                 <a href="#" aria-haspopup="listbox">
                   {/* {me.value.name} */}
 
-                  <img
-                    alt=""
-                    src={`${filesUri}${getUserpicPath(me.value.userpic)}`}
-                  />
+                  {me.value.userpic ? (
+                    <img
+                      alt=""
+                      src={`${filesUri}${getUserpicPath(me.value.userpic)}`}
+                    />
+                  ) : (
+                    <span
+                      className="empty-avatar"
+                      style={{
+                        backgroundColor: userColors[me.value.color]?.color
+                      }}
+                    >
+                      {me.value.name[0]}
+                    </span>
+                  )}
                 </a>
                 <ul role="listbox">
                   <li>
