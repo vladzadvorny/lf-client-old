@@ -16,15 +16,55 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 var(--spacing);
+    padding: 0 var(--spacing) !important;
 
-    // a {
-    //   cursor: pointer;
-    //   color: var(--primary-inverse);
+    a {
+      &:focus-within {
+        background-color: transparent;
+      }
 
-    //   &:hover,
-    //   .active {
-    //     background-color: black;
+      &:hover {
+        background-color: var(--primary-focus);
+      }
+    }
+
+    a[aria-haspopup='listbox'] {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    li.userpic {
+      // padding: 0;
+      // display: flex;
+      margin-left: var(--spacing);
+
+      img {
+        // display: none;
+        // height: 100%;
+        // width: 100%;
+        width: calc(var(--nav-link-spacing-vertical) * 4);
+        height: calc(var(--nav-link-spacing-vertical) * 4);
+        border-radius: 50%;
+        margin-right: -7px;
+        margin-top: calc(var(--nav-link-spacing-vertical) * -0.6);
+        margin-bottom: calc(var(--nav-link-spacing-vertical) * -0.6);
+      }
+    }
+
+    .editor {
+      // border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    // ul {
+    //   a {
+    //     padding: calc(var(--nav-link-spacing-vertical) * 0.8)
+    //       calc(var(--nav-link-spacing-horizontal) * 1);
+
+    //     margin: calc(var(--nav-link-spacing-vertical) * -1.2)
+    //       calc(var(--nav-link-spacing-horizontal) * -1);
     //   }
     // }
   }

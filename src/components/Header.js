@@ -8,6 +8,12 @@ import './Header.scss'
 import { useAppState } from '../state'
 import { storage } from '../constants/storage'
 import { useTranslate } from '../hooks/useTranslate'
+import { filesUri } from '../constants/config'
+
+const getUserpicPath = path => {
+  const [start, end] = path.split('.')
+  return `${start}_thumb.${end}`
+}
 
 const Header = () => {
   const { t } = useTranslate()
@@ -41,13 +47,19 @@ const Header = () => {
           ) : (
             <>
               <li>
-                <Link href="/editor" className="login" activeClassName="active">
-                  Editor
+                <Link href="/editor" className="editor">
+                  <span className="material-symbols-outlined">edit_note</span>
+                  {t('common.newPost')}
                 </Link>
               </li>
-              <li role="list" dir="rtl">
+              <li role="list" dir="rtl" className="userpic">
                 <a href="#" aria-haspopup="listbox">
-                  {me.value.name}
+                  {/* {me.value.name} */}
+
+                  <img
+                    alt=""
+                    src={`${filesUri}${getUserpicPath(me.value.userpic)}`}
+                  />
                 </a>
                 <ul role="listbox">
                   <li>

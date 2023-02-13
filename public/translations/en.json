@@ -43,6 +43,7 @@
     "newPasswordConfirm": "New password confirm"
   },
   "common": {
-    "save": "Save"
+    "save": "Save",
+    "newPost": "New post"
   }
 }
