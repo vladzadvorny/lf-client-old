@@ -35,6 +35,14 @@
   },
   "settings": {
     "settings": "Settings",
-    "interfaceLanguage": "Interface language"
+    "interfaceLanguage": "Interface language",
+    "userpic": "Userpic",
+    "changePassword": "Change password",
+    "oldPassword": "Old password",
+    "newPassword": "New password",
+    "newPasswordConfirm": "New password confirm"
+  },
+  "common": {
+    "save": "Save"
   }
 }

@@ -1,6 +1,8 @@
 $headerHeight: 69px;
 $footerHeight: 69px;
 
+$primary-hue: 89 !default;
+
 :root {
   --header-height: #{$headerHeight};
   --footer-height: #{$footerHeight};

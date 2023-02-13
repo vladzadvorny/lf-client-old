@@ -35,6 +35,14 @@
   },
   "settings": {
     "settings": "Настройки",
-    "interfaceLanguage": "Язык интерфейса"
+    "interfaceLanguage": "Язык интерфейса",
+    "userpic": "Аватарка",
+    "changePassword": "Смена пароля",
+    "oldPassword": "Старый пароль",
+    "newPassword": "Новый пароль",
+    "newPasswordConfirm": "Подтверждение нового пароля"
+  },
+  "common": {
+    "save": "Сохранить"
   }
 }

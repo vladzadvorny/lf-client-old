@@ -3,13 +3,14 @@
   justify-content: center;
   // height: var(--header-height);
   // background-color: var(--contrast);
-  background-color: var(--card-sectionning-background-color);
+  background-color: var(--nav-background-color);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
   box-shadow: var(--card-box-shadow);
+  backdrop-filter: saturate(180%) blur(20px);
 
   &-container {
     display: flex;

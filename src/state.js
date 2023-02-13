@@ -46,7 +46,7 @@ effect(() => {
 })
 
 // redux devtools
-if (isBrowser && !isProduction) {
+if (isBrowser && !isProduction && window.__REDUX_DEVTOOLS_EXTENSION__) {
   const devTools = {}
 
   window.__REDUX_DEVTOOLS_EXTENSION__({ latency: 0 })

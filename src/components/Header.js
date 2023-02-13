@@ -35,7 +35,7 @@ const Header = () => {
           {!me.value.id ? (
             <li>
               <Link href="/auth" className="login" activeClassName="active">
-                Войти
+                {t('auth.login')}
               </Link>
             </li>
           ) : (

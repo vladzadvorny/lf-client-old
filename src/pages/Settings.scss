@@ -4,4 +4,26 @@
   padding: var(--spacing) var(--spacing) 0 var(--spacing) !important;
   display: flex;
   flex-direction: column;
+
+  .userpic {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin-right: var(--spacing);
+      margin-bottom: var(--spacing);
+    }
+  }
+
+  h4 {
+    margin-top: var(--typography-spacing-vertical);
+    margin-bottom: calc(var(--typography-spacing-vertical) / 2);
+  }
+
+  .buttons {
+    margin-top: var(--spacing);
+  }
 }
